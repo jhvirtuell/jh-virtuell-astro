@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+
+const quickServices = [
+  {
+    title: 'Schneller IT-Support vor Ort',
+    description: 'Hardware, WLAN, Drucker, Microsoft 365, Backups – wir sind in Stein am Rhein zeitnah bei dir oder helfen remote.',
+    icon: '⚡️',
+  },
+  {
+    title: 'Digitalisierung & Automatisierung',
+    description: 'Wir optimieren deine Abläufe – von Cloud-Lösungen über Automationen bis KI-gestützte Workflows.',
+    icon: '🧠',
+  },
+  {
+    title: 'Schulungen & Workshops',
+    description: 'Individuelle Trainings zu Microsoft 365, KI-Tools, Security & digitalem Arbeiten – für Teams und Einzelpersonen.',
+    icon: '🎓',
+  },
+];
+
+const tools = [
+  {
+    title: 'QR-Rechnung Generator',
+    teaser: 'Rechnungen für Vereine & KMU direkt online erstellen – gratis & DSGVO-konform.',
+    link: '/tools/qr-rechnung',
+  },
+  {
+    title: 'Passwort-Generator',
+    teaser: 'Sichere Passwörter für deine Accounts – anonym, ohne Speicherung.',
+    link: '/tools/passwort-generator',
+  },
+  {
+    title: 'Kalenderwoche & IBAN-Prüfer',
+    teaser: 'Praktische Helfer für Administration und Buchhaltung – ohne Werbung.',
+    link: '/tools',
+  },
+];
+---
+
+<Layout
+  title="IT-Service Stein am Rhein – Support, Digitalisierung & KI | JH Virtuell"
+  description="IT-Support, Digitalisierung und KI-Lösungen direkt in Stein am Rhein. Vor-Ort-Service für KMU, Selbständige und Privatpersonen – schnell, ehrlich, persönlich.">
+
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-10 md:pt-14 pb-20 px-4 min-h-screen">
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <span class="inline-block bg-gold/10 text-gold px-4 py-1 rounded-full font-semibold text-sm tracking-wide shadow">
+        Stein am Rhein & Umgebung
+      </span>
+      <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold text-gold tracking-tight drop-shadow">
+        IT-Service & Digitalisierung vor Ort
+      </h1>
+      <p class="mt-4 text-lg sm:text-xl text-dark/80 leading-relaxed">
+        Wir sind dein IT-Partner in Stein am Rhein – für schnelle Hilfe, nachhaltige Strategien und moderne Automationen.
+        Persönlich, ehrlich und mit Blick auf das, was wirklich zählt: funktionierende Technik, zufriedene Teams und effiziente Abläufe.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 justify-center text-sm font-medium text-dark/70">
+        <span class="bg-white border border-gold/30 px-4 py-2 rounded-full shadow">Vor-Ort-Service & Remote-Support</span>
+        <span class="bg-white border border-gold/30 px-4 py-2 rounded-full shadow">Kostenlose Erstberatung</span>
+        <span class="bg-white border border-gold/30 px-4 py-2 rounded-full shadow">KMU, Selbständige & Privat</span>
+      </div>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/kontakt" class="inline-flex items-center justify-center bg-gold text-dark font-semibold px-8 py-3 rounded-full shadow hover:opacity-90 transition">
+          Erstgespräch vereinbaren
+        </a>
+        <a href="tel:+41786844017" class="inline-flex items-center justify-center border-2 border-gold text-gold font-semibold px-8 py-3 rounded-full hover:bg-gold/10 transition">
+          +41 78 684 40 17 anrufen
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      {quickServices.map(service => (
+        <article class="bg-white border border-gold/20 rounded-2xl shadow-lg p-6 text-left hover:shadow-2xl hover:border-gold/60 transition">
+          <div class="text-3xl" aria-hidden="true">{service.icon}</div>
+          <h2 class="mt-3 text-xl font-bold text-gold">{service.title}</h2>
+          <p class="mt-2 text-base text-dark/80 leading-relaxed">{service.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white border border-gold/20 rounded-2xl shadow-xl p-8 mb-16">
+      <h2 class="text-2xl font-bold text-gold text-center mb-6">Was wir in Stein am Rhein für dich übernehmen</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-dark/80 text-base leading-relaxed">
+        <ul class="space-y-2">
+          <li><strong>IT-Support & Troubleshooting</strong>: Drucker, WLAN, NAS, Microsoft 365, Security</li>
+          <li><strong>Digitalisierung & Automatisierung</strong>: Prozesse analysieren, Tools einführen, KI nutzen</li>
+          <li><strong>Websites & Wartung</strong>: Pflege, Updates, Performance, Monitoring</li>
+        </ul>
+        <ul class="space-y-2">
+          <li><strong>Cybersecurity & Backups</strong>: Firewall, Passwort-Policies, Backup-Strategien</li>
+          <li><strong>Schulungen</strong>: Teams & Einzelpersonen für moderne Tools fit machen</li>
+          <li><strong>Individuelle Lösungen</strong>: Schnittstellen, Low-Code, Automationen für KMU</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mb-16">
+      <div class="bg-dark text-white rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top,_#d4af37_0%,_transparent_60%)]"></div>
+        <div class="relative z-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-gold mb-4">Kostenlose Tools aus Stein am Rhein</h2>
+          <p class="text-base text-white/80 mb-6">
+            Für Vereine, KMU und Privatpersonen aus der Region haben wir praktische Online-Tools entwickelt – entwickelt in Stein am Rhein, ohne Werbung, ohne Tracking.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {tools.map(tool => (
+              <a href={tool.link} class="block bg-white text-dark rounded-xl p-5 shadow-md hover:shadow-2xl hover:-translate-y-1 transition">
+                <h3 class="text-lg font-semibold text-gold mb-2">{tool.title}</h3>
+                <p class="text-sm text-dark/70 leading-relaxed">{tool.teaser}</p>
+              </a>
+            ))}
+          </div>
+          <p class="mt-6 text-sm text-white/70">Tipp: Speichere dir <a href="/tools" class="text-gold underline hover:no-underline">jh-virtuell.ch/tools</a> als Startseite – dort findest du alle Helfer auf einen Blick.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-16">
+      <h2 class="text-2xl font-bold text-gold text-center mb-6">Warum JH Virtuell?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-dark/80 text-base leading-relaxed">
+        <div class="bg-white border border-gold/20 rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-gold mb-2">Persönlich & ehrlich</h3>
+          <p>Direkter Kontakt ohne Hotline – du arbeitest mit echten Menschen aus Stein am Rhein.</p>
+        </div>
+        <div class="bg-white border border-gold/20 rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-gold mb-2">Schnelle Reaktionszeiten</h3>
+          <p>Wir kennen die Region und sind bei Bedarf kurzfristig vor Ort oder remote erreichbar.</p>
+        </div>
+        <div class="bg-white border border-gold/20 rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-gold mb-2">Leistungen aus einer Hand</h3>
+          <p>Beratung, Umsetzung, Betrieb, Schulung – ein Ansprechpartner für alle digitalen Fragen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl font-bold text-gold mb-3">Bereit für das nächste Level?</h2>
+      <p class="text-dark/80 mb-6">
+        Lass uns sprechen: Gemeinsam bringen wir deine IT, deine Prozesse und dein digitales Arbeiten voran – zuverlässig und mit Herz.
+      </p>
+      <a href="/kontakt" class="inline-flex items-center justify-center bg-gold text-dark font-semibold px-8 py-3 rounded-full shadow hover:opacity-90 transition">
+        Jetzt Gespräch vereinbaren
+      </a>
+    </div>
+
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "JH Virtuell – IT-Service Stein am Rhein",
+        "image": "https://jh-virtuell.ch/logo-jh.webp",
+        "url": "https://jh-virtuell.ch/standorte/stein-am-rhein",
+        "telephone": "+41 78 684 40 17",
+        "email": "info@jh-virtuell.ch",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chlini Schanz 31",
+          "postalCode": "8260",
+          "addressLocality": "Stein am Rhein",
+          "addressCountry": "CH"
+        },
+        "areaServed": [
+          {"@type": "City", "name": "Stein am Rhein"},
+          {"@type": "AdministrativeArea", "name": "Kanton Schaffhausen"},
+          {"@type": "Country", "name": "Schweiz"}
+        ],
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }],
+        "sameAs": [
+          "https://www.linkedin.com/company/jh-virtuell",
+          "https://g.page/r/CVh6_BBXMl3vEAI"
+        ],
+        "priceRange": "$$",
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 47.6591, "longitude": 8.8566 },
+          "geoRadius": 25000
+        },
+        "makesOffer": [
+          {"@type": "Offer", "name": "IT-Support Stein am Rhein"},
+          {"@type": "Offer", "name": "Digitalisierung & Automatisierung"},
+          {"@type": "Offer", "name": "KI-Workshops & Schulungen"}
+        ]
+      })}
+    </script>
+  </section>
+</Layout>
