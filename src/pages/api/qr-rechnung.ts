@@ -9,6 +9,9 @@ const toOptionalString = (value: unknown) => {
   return trimmed.length > 0 ? trimmed : undefined;
 };
 
+const MM_TO_PT = 72 / 25.4;
+const mmToPt = (mm: number) => mm * MM_TO_PT;
+
 const streamToBuffer = (doc: PDFDocument) =>
   new Promise<Buffer>((resolve, reject) => {
     const chunks: Buffer[] = [];
@@ -67,6 +70,12 @@ export const POST: APIRoute = async ({ request }) => {
           }
         : undefined;
 
+    const supportedLanguages = new Set(["DE", "FR", "IT", "EN"]);
+    const languageFromForm = toOptionalString(payload?.sprache)?.toUpperCase();
+    const billLanguage = supportedLanguages.has(languageFromForm ?? "")
+      ? (languageFromForm as "DE" | "FR" | "IT" | "EN")
+      : "DE";
+
     const billData = {
       currency: toOptionalString(payload?.waehrung) ?? "CHF",
       amount,
@@ -83,8 +92,18 @@ export const POST: APIRoute = async ({ request }) => {
       debtor,
     };
 
-    const doc = new PDFDocument({ size: "A4", margin: 0 });
-    const bill = new SwissQRBill(billData);
+    const formatSelection = toOptionalString(payload?.format)?.toUpperCase();
+    const isQrSlipOnly = formatSelection === "QR_BILL_ONLY";
+
+    const doc = new PDFDocument({
+      size: isQrSlipOnly ? [mmToPt(210), mmToPt(105)] : "A4",
+      margin: 0,
+    });
+    const bill = new SwissQRBill(billData, {
+      language: billLanguage,
+      scissors: !isQrSlipOnly,
+      separate: !isQrSlipOnly,
+    });
     bill.attachTo(doc);
     doc.end();
 
