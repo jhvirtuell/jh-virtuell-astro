@@ -1,0 +1,20 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "skipLibCheck": true,          // ✅ ignoriert fehlende Typdefinitionen in node_modules
+    "noEmit": true,                // verhindert Output von .js beim Kompilieren
+    "moduleResolution": "node",    // saubere Modulauflösung für Node
+    "esModuleInterop": true,       // erlaubt Default-Imports von CommonJS
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*",
+    "astro.config.mjs"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

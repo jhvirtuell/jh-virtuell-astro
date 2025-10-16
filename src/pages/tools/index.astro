@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+
+const tools = [
+  {
+    title: 'Aktuelle Kalenderwoche',
+    description: 'Welche Kalenderwoche (KW) ist heute? Jetzt sofort herausfinden.',
+    link: '/tools/kalenderwoche',
+  },
+  {
+    title: 'Passwort-Generator',
+    description: 'Erstelle sichere Passwörter in Sekunden – ideal für E-Mail, Accounts & mehr.',
+    link: '/tools/passwort-generator',
+  },
+  {
+    title: 'QR-Rechnung Generator',
+    description: 'Erstelle deine Schweizer QR-Rechnung direkt online – kostenlos, anonym & ohne Anmeldung.',
+    link: '/tools/qr-rechnung',
+  },
+  {
+    title: 'Online-Rechner',
+    description: 'Einfach rechnen ohne Werbung – ideal für Business, Schule & Alltag.',
+    link: '/tools/online-rechner',
+  },
+  {
+    title: 'Digitale Uhrzeit',
+    description: 'Genau die aktuelle Uhrzeit – mit Sekundenanzeige & ohne Werbung.',
+    link: '/tools/digitale-uhrzeit',
+  },
+  {
+    title: 'IBAN-Prüfer',
+    description: 'Prüfe deine IBAN sofort – kostenlos, anonym & ohne Werbung.',
+    link: '/tools/iban-pruefer',
+  },
+  {
+    title: 'UUID-Generator',
+    description: 'Erzeuge eindeutige UUIDs direkt im Browser – DSGVO-konform & anonym.',
+    link: '/tools/uuid-generator',
+  },
+  {
+    title: 'Zeichen- & Wortzähler',
+    description: 'Zähle Wörter, Zeichen & Absätze live – ideal für SEO, Uni & Social Media.',
+    link: '/tools/wortzaehler',
+  },
+  {
+    title: 'Alter berechnen',
+    description: 'Geburtsdatum eingeben – wir zeigen dir dein exaktes Alter in Jahren, Monaten & Tagen.',
+    link: '/tools/alter-berechnen',
+  },
+];
+---
+
+<Layout
+  title="Digitale Tools – Kalenderwoche, QR-Rechnung, Passwort, IBAN & mehr | JH Virtuell"
+  description="Kostenlose Online-Tools wie QR-Rechnung Generator, Kalenderwoche-Rechner, Passwort-Generator, IBAN-Prüfer, UUID, Wortzähler & mehr – schnell, anonym, werbefrei und in der Schweiz entwickelt.">
+
+  <section id="tools-index" class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-24 px-4 min-h-screen">
+
+    <!-- Hero -->
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Kostenlose Online-Tools
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Schnell, anonym, werbefrei – entwickelt in der Schweiz
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80">
+        Entdecke nützliche Tools für Alltag, Büro und Digitales – QR-Rechnung Generator, Kalenderwoche, Passwort-Generator, IBAN-Check, UUID, Wortzähler und mehr. DSGVO-konform, ohne Tracking, sofort einsatzbereit.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" role="list">
+      {tools.map(tool => (
+        <a
+          href={tool.link}
+          role="listitem"
+          aria-label={`Öffne: ${tool.title}`}
+          class="group bg-white p-6 rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.02] transition border border-light hover:border-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 block"
+        >
+          <h2 class="text-xl font-bold mb-2 text-gold group-hover:underline">{tool.title}</h2>
+          <p class="text-base text-dark/80 leading-relaxed">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- SEO-Absatz -->
+    <div class="max-w-4xl mx-auto mt-14 text-dark/80 text-base leading-relaxed">
+      <p>
+        Die Tools von <strong>JH Virtuell</strong> sind auf maximale Geschwindigkeit und Datenschutz ausgelegt.
+        Alle Berechnungen laufen direkt im Browser – keine Registrierung, keine versteckten Downloads, keine Weitergabe von Daten.
+        Ob <em>QR-Rechnung Generator</em>, <em>Kalenderwoche heute</em>, <em>Passwort erstellen</em>, <em>IBAN prüfen</em> oder <em>Wort- und Zeichenzähler</em>:
+        Jede Seite ist suchmaschinenoptimiert, mobilfreundlich und ohne Cookies nutzbar. Speichere dir diese Übersicht als Lesezeichen –
+        wir erweitern das Angebot laufend um weitere nützliche, rechtssichere Online-Tools.
+      </p>
+    </div>
+
+    <!-- Unterstützungs-Box -->
+    <div id="support" class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+      <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+      <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+      <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition">
+        Jetzt 2 CHF spenden
+      </a>
+      <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code> via PayPal</p>
+    </div>
+
+    <!-- JSON-LD ItemList -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"ItemList",
+        "name":"JH Virtuell – Online Tools",
+        "itemListElement": tools.map((t, i) => ({
+          "@type":"ListItem",
+          "position": i + 1,
+          "name": t.title,
+          "url": `https://jh-virtuell.ch${t.link}`
+        }))
+      })}
+    </script>
+
+  </section>
+</Layout>

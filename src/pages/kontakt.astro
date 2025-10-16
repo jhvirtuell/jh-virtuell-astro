@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+import { withVersion } from '../utils/version.ts';
+---
+
+<Layout
+  title="Kontakt – JH Virtuell"
+  description="Nimm Kontakt auf mit JH Virtuell. Dein Partner für IT-Support, Beratung und Digitalisierung in Stein am Rhein, Schaffhausen und der Schweiz.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section id="kontakt" aria-label="Kontaktbereich" class="relative pt-8 md:pt-12 lg:pt-16 pb-24 px-4 sm:px-6 bg-gradient-to-br from-gold/10 via-light to-white text-dark">
+
+    <!-- (entfernt) Deko-Welle oben – verursachte Weisskante -->
+
+    <div class="max-w-2xl mx-auto text-center mb-14">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gold tracking-tight">Kontaktiere uns</h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        IT-Beratung, Support & Digitalisierung – persönlich, ehrlich & direkt
+      </h2>
+      <p class="text-lg text-dark/80 mb-6">
+        Dein kurzer Draht zu IT-Beratung, Support und Digitalisierung. Region Schaffhausen / Stein am Rhein – und schweizweit remote.
+      </p>
+      <p class="text-base text-dark/70">
+        Egal ob KMU, Selbständige oder Privatperson – wir helfen schnell, unkompliziert und professionell. Nutze das Formular oder kontaktiere uns direkt per Mail oder WhatsApp.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-base mt-6">
+        <a href="mailto:info@jh-virtuell.ch" class="flex items-center gap-2 text-gold hover:underline font-semibold">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a3 3 0 003.22 0L22 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          info@jh-virtuell.ch
+        </a>
+        <span class="hidden sm:inline-block text-dark/40">|</span>
+        <a href="tel:+41786844017" class="flex items-center gap-2 text-gold hover:underline font-semibold">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a2 2 0 011.85 1.22l1.7 3.39a2 2 0 01-.46 2.28l-1.27 1.27a16 16 0 006.59 6.59l1.27-1.27a2 2 0 012.28-.46l3.39 1.7A2 2 0 0121 18.72V21a2 2 0 01-2 2h-1C8.27 23 1 15.73 1 7V6a2 2 0 012-1z"/>
+          </svg>
+          +41 78 684 40 17
+        </a>
+      </div>
+    </div>
+
+    <h2 class="sr-only">Kontaktformular</h2>
+
+    <div class="max-w-2xl mx-auto">
+      <form
+        id="kontaktForm"
+        action="/api/contact"
+        method="post"
+        accept-charset="UTF-8"
+        autocomplete="on"
+        aria-describedby="form-hint"
+        aria-live="polite"
+        class="bg-white p-8 rounded-2xl shadow-2xl space-y-6 border-2 border-gold/30"
+      >
+        <p id="form-hint" class="text-sm text-dark/70">Fülle das Formular aus – wir antworten in der Regel noch am gleichen Werktag.</p>
+
+        <div>
+          <label for="name" class="block font-semibold mb-1 text-left">Dein Name</label>
+          <input type="text" id="name" name="name" inputmode="text" autocomplete="name" required aria-required="true" maxlength="100" class="w-full border border-dark/20 rounded px-4 py-2 focus:outline-gold" />
+        </div>
+
+        <div>
+          <label for="email" class="block font-semibold mb-1 text-left">Deine E-Mail</label>
+          <input type="email" id="email" name="email" inputmode="email" autocomplete="email" required aria-required="true" maxlength="120" class="w-full border border-dark/20 rounded px-4 py-2 focus:outline-gold" />
+        </div>
+
+        <div>
+          <label for="phone" class="block font-semibold mb-1 text-left">Telefonnummer</label>
+          <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" required aria-required="true" pattern="^[0-9+()\\s-]{6,}$" maxlength="30" class="w-full border border-dark/20 rounded px-4 py-2 focus:outline-gold" />
+        </div>
+
+        <div>
+          <label for="service" class="block font-semibold mb-1 text-left">Worum geht's?</label>
+          <select id="service" name="service" required aria-required="true" class="w-full border border-dark/20 rounded px-4 py-2 focus:outline-gold bg-light">
+            <option value="" disabled selected>Bitte wählen ...</option>
+            <option value="IT-Beratung">IT-Beratung & Strategie</option>
+            <option value="Support">Technik-Support</option>
+            <option value="Digitalisierung">Digitalisierung</option>
+            <option value="Website">Website-Pflege & Wartung</option>
+            <option value="SEO">SEO / SEA</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block font-semibold mb-1 text-left">Deine Nachricht</label>
+          <textarea id="message" name="message" rows="5" minlength="10" maxlength="2000" required aria-required="true" class="w-full border border-dark/20 rounded px-4 py-2 focus:outline-gold" aria-describedby="message-help"></textarea>
+          <p id="message-help" class="text-xs text-dark/60">Beschreibe dein Anliegen so konkret wie möglich (mind. 10 Zeichen).</p>
+        </div>
+
+        <!-- Honeypot -->
+        <div class="hidden" aria-hidden="true">
+          <label for="company">Firma (frei lassen)</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Cloudflare Turnstile -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAGdrlBXKTHU4MF5" data-theme="light"></div>
+
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="privacy" name="privacy" required class="accent-gold" />
+          <label for="privacy" class="text-sm text-dark/80 select-none">
+            Ich akzeptiere die <a href="/datenschutz" class="text-gold underline hover:no-underline" rel="nofollow">Datenschutzerklärung</a>.
+          </label>
+        </div>
+
+        <button type="submit" aria-label="Kontaktformular absenden" class="w-full bg-gold text-dark font-bold px-8 py-3 rounded-full shadow hover:opacity-90 transition">
+          Nachricht senden
+        </button>
+
+        <div id="form-message" role="status" aria-live="polite" class="mt-4 text-center text-base font-medium text-dark/80"></div>
+      </form>
+
+      <div class="text-center mt-14 mb-8">
+        <span class="inline-block text-dark/60 text-base">
+          Oder direkt per 
+          <a href="mailto:info@jh-virtuell.ch" class="font-bold text-gold hover:underline mx-1">E-Mail</a>
+          oder
+          <a href="https://wa.me/41786844017" target="_blank" rel="noopener noreferrer" aria-label="Per WhatsApp schreiben" class="font-bold text-green-600 hover:underline mx-1">WhatsApp</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto text-center text-base text-dark/80 mt-10">
+      <p>
+        JH Virtuell steht für ehrliche IT-Beratung und persönliche Betreuung in Stein am Rhein, Schaffhausen und der ganzen Schweiz.<br />
+        Unsere Kund:innen schätzen den schnellen Support, direkte Kommunikation und moderne Lösungen. Schreib uns – wir freuen uns auf deine Nachricht!
+      </p>
+    </div>
+
+    <address class="max-w-2xl mx-auto not-italic text-center text-sm text-dark/70 mt-6">
+      JH Virtuell KLG · Chlini Schanz 31 · 8260 Stein am Rhein · Schweiz
+    </address>
+
+    <!-- Untere Deko-Welle (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- externe Scripts -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <noscript>
+    <p class="text-center text-sm text-red-700 mt-4">
+      Bitte JavaScript aktivieren, um das Kontaktformular zu senden. Alternativ schreibe an
+      <a href="mailto:info@jh-virtuell.ch" class="underline">info@jh-virtuell.ch</a>.
+    </p>
+  </noscript>
+  <script type="module" src={withVersion('/scripts/kontakt.js')}></script>
+
+  <!-- Strukturierte Daten -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Kontakt – JH Virtuell",
+      "description": "Kontakt zu JH Virtuell – IT-Support, Beratung und Digitalisierung in Stein am Rhein und Schaffhausen.",
+      "url": "https://jh-virtuell.ch/kontakt",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://jh-virtuell.ch/"},
+          {"@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://jh-virtuell.ch/kontakt"}
+        ]
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "JH Virtuell KLG",
+        "url": "https://jh-virtuell.ch/",
+        "email": "info@jh-virtuell.ch",
+        "telephone": "+41 78 684 40 17",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chlini Schanz 31",
+          "postalCode": "8260",
+          "addressLocality": "Stein am Rhein",
+          "addressCountry": "CH"
+        },
+        "areaServed": "CH",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@jh-virtuell.ch",
+          "telephone": "+41 78 684 40 17",
+          "availableLanguage": ["de", "en"]
+        }
+      }
+    })}
+  </script>
+</Layout>

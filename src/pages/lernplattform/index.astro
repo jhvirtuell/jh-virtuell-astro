@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="Lernplattform – Kostenlos für IT- und Berufsprüfungen | JH Virtuell"
+  description="Kostenlose Lernplattform für ITIL 4 Foundation und die BT121 Prüfung. Interaktive Fragen mit Sofort-Feedback – ohne Anmeldung, ohne Kosten, 100 % datenschutzfreundlich.">
+  
+  <!-- Stabiler, schlanker Top-Abstand: nutzt den globalen Spacer aus dem Layout -->
+  <section class="relative pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen bg-gradient-to-b from-gold/10 via-light to-white overflow-x-hidden">
+
+    <!-- (Entfernt) Deko-Bogen oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <!-- Intro -->
+    <div class="max-w-2xl mx-auto text-center mb-14 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        JH Virtuell Lernplattform
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Kostenlos, anonym & interaktiv – direkt im Browser
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 leading-relaxed">
+        Trainiere <strong>kostenlos & interaktiv</strong> für deine IT-Zertifizierung oder Berufsprüfung – mit
+        <strong>Sofort-Feedback</strong> und ohne Anmeldung. 100 % transparent & datenschutzfreundlich.
+      </p>
+    </div>
+
+    <!-- Quiz-Kacheln -->
+    <div class="flex flex-wrap justify-center gap-10 relative z-10">
+      
+      <!-- ITIL Quiz -->
+      <a
+        href="/lernplattform/itil-4-foundation"
+        class="group w-full sm:w-96 bg-white border-2 border-gold/80 rounded-2xl p-10 shadow-xl hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 flex flex-col items-center"
+        aria-label="Öffne ITIL 4 Foundation Lernquiz"
+      >
+        <span class="inline-block mb-4 text-5xl animate-bounce">🧠</span>
+        <h3 class="text-2xl font-bold text-gold mb-2 group-hover:underline transition">
+          ITIL 4 Foundation
+        </h3>
+        <p class="text-dark/80 mb-5 text-center">
+          Originalnahe Quizfragen mit Sofort-Feedback.<br />
+          Ideal zur Vorbereitung auf die ITIL 4 Foundation Prüfung.
+        </p>
+        <span class="bg-gold/10 text-gold px-6 py-2 rounded-full text-xs font-semibold tracking-wide mt-auto group-hover:bg-gold group-hover:text-dark transition">
+          Kostenlos lernen
+        </span>
+      </a>
+
+      <!-- BT121 Quiz -->
+      <a
+        href="/lernplattform/bt121"
+        class="group w-full sm:w-96 bg-white border-2 border-gold/80 rounded-2xl p-10 shadow-xl hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 flex flex-col items-center"
+        aria-label="Öffne BT121 Lernquiz"
+      >
+        <span class="inline-block mb-4 text-5xl animate-bounce">📘</span>
+        <h3 class="text-2xl font-bold text-gold mb-2 group-hover:underline transition">
+          Prüfung BT121
+        </h3>
+        <p class="text-dark/80 mb-5 text-center">
+          Interaktive Vorbereitung auf die Berufskundeprüfung BT121.<br />
+          Fragen nach aktuellem Lernzielkatalog.
+        </p>
+        <span class="bg-gold/10 text-gold px-6 py-2 rounded-full text-xs font-semibold tracking-wide mt-auto group-hover:bg-gold group-hover:text-dark transition">
+          Kostenlos lernen
+        </span>
+      </a>
+
+    </div>
+
+    <!-- Info-Block -->
+    <div class="max-w-3xl mx-auto text-center mt-16 text-dark/70 text-base relative z-10">
+      <p class="mb-4">
+        Diese Plattform ist ein freies Lernprojekt für Schüler, Berufseinsteiger und alle, die sich auf Prüfungen vorbereiten möchten – ganz ohne Hürden oder Verpflichtungen.
+      </p>
+      <p>
+        Inhalte basieren auf öffentlich verfügbaren Lernzielen und werden unabhängig erstellt. Es besteht keine Verbindung zu offiziellen Prüfungsträgern.
+      </p>
+      <p class="mt-4 text-sm text-dark/60">
+        <strong>Rechtlicher Hinweis:</strong> JH Virtuell bietet keine offiziellen Prüfungen an. Die Inhalte dienen ausschliesslich der freiwilligen, kostenlosen Selbstvorbereitung.
+      </p>
+    </div>
+
+    <!-- JSON-LD: WebPage + ItemList der Lernpfade -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"WebPage",
+        "name":"JH Virtuell Lernplattform",
+        "url":"https://jh-virtuell.ch/lernplattform",
+        "description":"Kostenlose Lernplattform mit interaktiven Fragen und Sofort-Feedback für ITIL 4 Foundation und BT121 – ohne Anmeldung, ohne Kosten.",
+        "inLanguage":"de-CH",
+        "isPartOf":{"@type":"WebSite","name":"JH Virtuell","url":"https://jh-virtuell.ch"},
+        "mainEntity":{
+          "@type":"ItemList",
+          "name":"Kostenlose Lernpfade",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"ITIL 4 Foundation","url":"https://jh-virtuell.ch/lernplattform/itil-4-foundation"},
+            {"@type":"ListItem","position":2,"name":"Prüfung BT121","url":"https://jh-virtuell.ch/lernplattform/bt121"}
+          ]
+        }
+      })}
+    </script>
+
+    <!-- (Optional gelassen) Deko-Bogen unten – liegt unter Content -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+  </section>
+</Layout>

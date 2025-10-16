@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="Technik-Support – Schnelle IT-Hilfe vor Ort & Remote | JH Virtuell"
+  description="Technik-Support für Unternehmen & Privatpersonen in der Schweiz. Persönliche IT-Hilfe bei PC-Problemen, Netzwerken & mehr – vor Ort oder per Fernwartung.">
+  
+  <!-- Stabiler Abschnitt: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative pt-8 md:pt-12 lg:pt-16 pb-16 px-4 bg-gradient-to-b from-gold/10 via-light to-white min-h-screen overflow-x-hidden">
+
+    <!-- (entfernt) oberer Deko-Bogen – verursachte Weisskante -->
+
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gold tracking-tight drop-shadow">
+        Technik-Support – schnelle Hilfe bei IT-Problemen
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Remote & vor Ort – persönlich, effizient & transparent
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-5 leading-relaxed">
+        Ob <strong>Fernwartung oder Vor-Ort-Service</strong> – wir lösen deine IT-Probleme zuverlässig für Unternehmen, Selbständige und Privathaushalte.
+      </p>
+      <span class="inline-block bg-gold/10 text-gold px-5 py-2 rounded-full font-semibold text-sm shadow mb-1">
+        Schnelle Hilfe? Jetzt anrufen: <a href="tel:+41786844017" class="font-bold hover:underline text-gold">+41 78 684 40 17</a>
+      </span>
+    </div>
+
+    <!-- Cards -->
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative z-10">
+      <!-- Remote Support -->
+      <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col justify-center hover:scale-[1.02] hover:shadow-2xl transition group animate-fadeInUp">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl" aria-hidden="true">🖥️</span>
+          <h3 class="text-xl font-bold text-gold">Remote-Support</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 mb-4 text-base">
+          <li>IT-Hilfe via Fernwartung (z. B. AnyDesk, TeamViewer)</li>
+          <li>Fehlerbehebung, Software-Probleme, Updates</li>
+          <li>Systemoptimierung, Sicherheit & Performance</li>
+          <li>Schnell, datenschutzkonform & bequem von zuhause</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Ideal bei akuten PC-Problemen – effizient & kontaktlos.</div>
+      </div>
+
+      <!-- Vor-Ort Support -->
+      <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col justify-center hover:scale-[1.02] hover:shadow-2xl transition group animate-fadeInUp">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl" aria-hidden="true">👨‍🔧</span>
+          <h3 class="text-xl font-bold text-gold">Support vor Ort</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 mb-4 text-base">
+          <li>Netzwerke, Router, WLAN, NAS, Drucker & Smart Home</li>
+          <li>Geräte einrichten, Probleme lösen, alles verständlich erklärt</li>
+          <li>Individuelle Betreuung direkt bei dir – ohne Fachchinesisch</li>
+          <li>In Stein am Rhein, Schaffhausen & angrenzenden Regionen</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Schnelle Terminvergabe und persönlicher Service vor Ort.</div>
+      </div>
+    </div>
+
+    <!-- Vorteile -->
+    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-10 relative z-10">
+      <div class="bg-white rounded-2xl shadow p-8">
+        <h3 class="text-gold text-lg font-bold mb-2">Warum JH Virtuell?</h3>
+        <ul class="space-y-2 text-dark/90 text-base">
+          <li>Keine Hotline – echte Menschen helfen dir persönlich</li>
+          <li>Faire Preise, verständliche Erklärungen</li>
+          <li>Langjährige Erfahrung & individuelle Lösungen</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-8">
+        <h3 class="text-gold text-lg font-bold mb-2">Typische Einsatzfälle</h3>
+        <ul class="space-y-2 text-dark/90 text-base">
+          <li>PC startet nicht mehr, System hängt</li>
+          <li>WLAN instabil, Drucker offline, NAS nicht erreichbar</li>
+          <li>Software-Probleme, Mail oder Office funktioniert nicht</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="max-w-2xl mx-auto text-center mt-14 mb-16 relative z-10">
+      <h3 class="text-2xl font-bold text-gold mb-3">Jetzt schnelle IT-Hilfe erhalten</h3>
+      <p class="text-dark/80 mb-6 text-base">
+        Keine langen Wartezeiten. Keine automatischen Systeme. Nur ehrliche IT-Hilfe – direkt und unkompliziert.
+      </p>
+      <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full text-lg shadow hover:opacity-90 transition animate-bounce-slow">
+        Kontaktformular öffnen
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <div class="max-w-3xl mx-auto mt-16 mb-6 relative z-10">
+      <h3 class="text-xl font-bold mb-6 text-gold text-center">FAQ – Technik-Support</h3>
+      <div class="space-y-8 text-base">
+        
+        <div class="bg-white rounded-xl shadow p-6">
+          <h4 class="font-semibold text-dark mb-2">⏱️ Wie schnell bekomme ich Hilfe?</h4>
+          <p class="text-dark/80">In dringenden Fällen oft noch am selben Tag – ansonsten garantieren wir in der Regel eine Rückmeldung oder Terminvereinbarung innerhalb von 24 Stunden.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h4 class="font-semibold text-dark mb-2">👨‍👩‍👧 Gibt es auch Support für Privatpersonen?</h4>
+          <p class="text-dark/80">Ja! Wir unterstützen nicht nur Firmen, sondern helfen auch Privathaushalten – z. B. bei Druckerproblemen, WLAN-Störungen oder allgemeinen PC-Fragen.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h4 class="font-semibold text-dark mb-2">💸 Was kostet der Technik-Support?</h4>
+          <p class="text-dark/80">Alle Preise findest du transparent auf unserer <a href="/preise" class="text-gold font-semibold hover:underline">Preisübersicht</a>. Alternativ erhältst du direkt ein massgeschneidertes Angebot – fair & ohne versteckte Kosten.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h4 class="font-semibold text-dark mb-2">📍 Wo ist Support vor Ort möglich?</h4>
+          <p class="text-dark/80">Wir kommen zu dir nach Hause oder ins Büro – in Stein am Rhein, im Kanton Schaffhausen und angrenzenden Gemeinden im Thurgau bis Ermatingen.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h4 class="font-semibold text-dark mb-2">🔐 Ist Remote-Support sicher?</h4>
+          <p class="text-dark/80">Ja, absolut. Wir verwenden etablierte Tools wie AnyDesk oder TeamViewer mit Einmalfreigabe. Du bestimmst, was wir sehen dürfen – deine Daten bleiben geschützt.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Unterer Deko-Bogen (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JSON-LD: Service + FAQPage -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "name":"Technik-Support (Remote & Vor Ort)",
+        "areaServed":{"@type":"Country","name":"Schweiz"},
+        "provider":{"@type":"Organization","name":"JH Virtuell","url":"https://jh-virtuell.ch"},
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF","description":"Schnelle Ersthilfe & kostenloses Erstgespräch"}
+      })}
+    </script>
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"Wie schnell bekomme ich Hilfe?","acceptedAnswer":{"@type":"Answer","text":"In dringenden Fällen oft am selben Tag; sonst Rückmeldung oder Termin innerhalb von 24 Stunden."}},
+          {"@type":"Question","name":"Gibt es auch Support für Privatpersonen?","acceptedAnswer":{"@type":"Answer","text":"Ja, wir helfen auch Privathaushalten bei WLAN, Druckern, PCs und mehr – vor Ort oder per Fernwartung."}},
+          {"@type":"Question","name":"Was kostet der Technik-Support?","acceptedAnswer":{"@type":"Answer","text":"Transparente Preise in unserer Preisübersicht; alternativ individuelles, faires Angebot ohne versteckte Gebühren."}},
+          {"@type":"Question","name":"Wo ist Support vor Ort möglich?","acceptedAnswer":{"@type":"Answer","text":"In Stein am Rhein, Kanton Schaffhausen und angrenzenden Gemeinden im Thurgau bis Ermatingen."}},
+          {"@type":"Question","name":"Ist Remote-Support sicher?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir arbeiten mit AnyDesk/TeamViewer und Einmalfreigaben; du kontrollierst die Sitzung."}}
+        ]
+      })}
+    </script>
+
+  </section>
+</Layout>

@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="Über uns – IT-Beratung & Cloudlösungen | JH Virtuell"
+  description="Lernen Sie das Team von JH Virtuell kennen – Ihre Experten für IT-Beratung, Digitalisierung, Website-Pflege und moderne Cloudlösungen aus der Schweiz.">
+
+  <!-- Stabiler Abschnitt: nutzt globalen Header-Spacer, kein Weißspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-16 px-4 min-h-screen overflow-x-hidden">
+
+    <!-- Intro -->
+    <div class="max-w-2xl mx-auto text-center mb-16 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Das Team von JH Virtuell
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Persönlich, lösungsorientiert & zuverlässig – aus der Schweiz
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 leading-relaxed">
+        Wir stehen für IT-Beratung mit Herz und Verstand – von Digitalisierung über Website-Pflege bis hin zu Cloudlösungen.
+        Mit uns hast du Partner, auf die Verlass ist.
+      </p>
+    </div>
+
+    <!-- Personen -->
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 relative z-10">
+      <!-- Jermain -->
+      <div class="group bg-white rounded-2xl shadow-xl p-10 text-center flex flex-col items-center hover:scale-105 hover:shadow-2xl transition">
+        <img src="/jh.webp" alt="Jermain Huber" class="w-36 h-36 rounded-full mb-4 shadow-lg ring-4 ring-gold/20 group-hover:ring-gold/40 transition object-cover object-center" loading="lazy" />
+        <h2 class="text-xl font-bold mb-1">Jermain Huber</h2>
+        <p class="text-gold font-medium mb-2">Mitgründer & IT&nbsp;Developer</p>
+        <p class="text-base text-dark/70 leading-relaxed mb-4">
+          Ich liebe Technik und klare Lösungen. Seit über 10 Jahren begleite ich KMU, Selbständige und Privatkunden bei ihren IT-Herausforderungen – strukturiert, ehrlich und effizient.
+        </p>
+        <!-- Trust-Badges Jermain -->
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/jermainhuber"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0A66C2] text-[#0A66C2] bg-white hover:bg-[#0A66C2]/10 transition text-sm font-semibold"
+            aria-label="LinkedIn-Profil von Jermain Huber öffnen"
+          >
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.46 4.73-2.46 5.05 0 5.98 3.33 5.98 7.66V24h-5v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V24H8z"/></svg>
+            LinkedIn
+          </a>
+          <a
+            href="https://de.fiverr.com/jermainiron"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#1DBF73] text-[#1DBF73] bg-white hover:bg-[#1DBF73]/10 transition text-sm font-semibold"
+            aria-label="Fiverr-Profil von Jermain Huber öffnen"
+          >
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true"><path d="M12.56 4.5h3.44V2H8v2.5h3.44V7H8v3h3.44v9.5h3.44V10H20V7h-4.56V4.5z"/></svg>
+            Fiverr
+          </a>
+        </div>
+      </div>
+
+      <!-- Eugenia -->
+      <div class="group bg-white rounded-2xl shadow-xl p-10 text-center flex flex-col items-center hover:scale-105 hover:shadow-2xl transition">
+        <img src="/ee.webp" alt="Eugenia Ebel" class="w-36 h-36 rounded-full mb-4 shadow-lg ring-4 ring-gold/20 group-hover:ring-gold/40 transition object-cover object-center" loading="lazy" />
+        <h2 class="text-xl font-bold mb-1">Eugenia Ebel</h2>
+        <p class="text-gold font-medium mb-2">Mitgründerin & Administration</p>
+        <p class="text-base text-dark/70 leading-relaxed">
+          Ich kümmere mich um Organisation, Kommunikation & die kleinen Dinge, die Grosses ermöglichen. Mit Struktur, Ruhe und einem offenen Ohr für Kunden und Partner.
+        </p>
+      </div>
+    </div>
+
+    <!-- Werte -->
+    <div class="max-w-4xl mx-auto text-center relative z-10 animate-fadeInUp">
+      <h2 class="text-3xl font-bold mb-6 text-gold">Werte, die uns antreiben</h2>
+      <div class="bg-white rounded-2xl shadow-xl p-8 text-left text-base leading-relaxed text-dark/90 space-y-4">
+        <p><strong>💡 Innovation trifft Erfahrung:</strong> Wir kombinieren technisches Know-how mit frischen Ideen – für Lösungen, die funktionieren.</p>
+        <p><strong>🤝 Persönliche Nähe:</strong> Keine Hotlines, keine Weiterleitungen – du sprichst direkt mit uns. Immer.</p>
+        <p><strong>🇨🇭 Qualität aus der Schweiz:</strong> Regional verwurzelt, digital vernetzt. Wir liefern solide Arbeit mit Handschlagqualität.</p>
+        <p><strong>🔐 Vertrauen & Transparenz:</strong> Wir stehen zu unserem Wort – offen, ehrlich und lösungsorientiert.</p>
+        <p><strong>🌱 Nachhaltigkeit in der IT:</strong> Unser Fokus liegt auf langlebigen, skalierbaren Lösungen, die wirklich weiterhelfen.</p>
+      </div>
+
+      <div class="mt-10">
+        <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full text-lg shadow hover:opacity-90 transition animate-bounce-slow">
+          Jetzt Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+
+    <!-- Affiliate: Infomaniak -->
+    <div class="mt-24 max-w-4xl mx-auto text-center relative z-10 animate-fadeInUp">
+      <div class="bg-white border border-gold/40 rounded-2xl p-10 shadow-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-gold">Unsere Hosting-Empfehlung: Infomaniak</h2>
+        <p class="text-base text-dark/80 leading-relaxed mb-6">
+          Für Hosting, Cloud-Server, E-Mail und moderne AI-Tools setzen wir auf <strong>Infomaniak</strong> – ein Schweizer Anbieter, der mit Performance, Datenschutz und Nachhaltigkeit überzeugt.
+          Wenn du über unsere Links buchst, unterstützt du unsere Arbeit direkt – danke dafür! 🙌
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-6">
+          <a href="https://www.infomaniak.com/goto/de/home?utm_term=6858361c12dd6" target="_blank" class="bg-gold text-dark px-6 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition">Zur Startseite</a>
+          <a href="https://www.infomaniak.com/goto/de/hosting.web?utm_term=6858361c12dd6" target="_blank" class="bg-gold text-dark px-6 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition">Webhosting buchen</a>
+          <a href="https://www.infomaniak.com/goto/de/hosting.mail?utm_term=6858361c12dd6" target="_blank" class="bg-gold text-dark px-6 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition">E-Mail Hosting</a>
+          <a href="https://www.infomaniak.com/de/hosting/llm-api?utm_term=6858361c12dd6" target="_blank" class="bg-gold text-dark px-6 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition">AI-Tools entdecken</a>
+          <a href="https://www.infomaniak.com/de/hosting/vps-cloud?utm_term=6858361c12dd6" target="_blank" class="bg-gold text-dark px-6 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition">Cloud Server</a>
+        </div>
+        <img src="/infomaniak-logo.svg" alt="Infomaniak Logo" class="h-12 mx-auto" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Unterer Deko-Bogen (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" /></svg>
+    </div>
+
+    <!-- JSON-LD: Organization + Person -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Organization",
+        "name":"JH Virtuell",
+        "url":"https://jh-virtuell.ch",
+        "logo":"https://jh-virtuell.ch/logo-jh.webp",
+        "department":[
+          {
+            "@type":"Person",
+            "name":"Jermain Huber",
+            "jobTitle":"IT Developer",
+            "image":"https://jh-virtuell.ch/jh.webp",
+            "sameAs":[
+              "https://www.linkedin.com/in/jermainhuber",
+              "https://de.fiverr.com/jermainiron"
+            ]
+          },
+          {
+            "@type":"Person",
+            "name":"Eugenia Ebel",
+            "jobTitle":"Administration",
+            "image":"https://jh-virtuell.ch/ee.webp"
+          }
+        ]
+      })}
+    </script>
+
+  </section>
+</Layout>

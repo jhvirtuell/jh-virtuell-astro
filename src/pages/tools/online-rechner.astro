@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+import { withVersion } from '../../utils/version.ts';
+---
+
+<Layout
+  title="Online-Rechner – Addition, Subtraktion, Multiplikation & Division | JH Virtuell"
+  description="Rechne schnell & kostenlos mit dem Online-Rechner von JH Virtuell. Unterstützt alle Grundrechenarten – ideal für Alltag, Schule & Büro. Werbefrei & DSGVO-konform.">
+
+  <!-- JSON-LD für strukturierte Daten -->
+  <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Online-Rechner – JH Virtuell",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "url": "https://jh-virtuell.ch/tools/online-rechner",
+      "description": "Rechne schnell & kostenlos mit dem Online-Rechner von JH Virtuell. Unterstützt Addition, Subtraktion, Multiplikation & Division – ideal für Alltag, Schule & Büro.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CHF" },
+      "creator": { "@type": "Organization", "name": "JH Virtuell", "url": "https://jh-virtuell.ch" }
+    }
+  </script>
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen">
+
+    <!-- (entfernt) obere Deko-Welle – verursachte Weisskante -->
+
+    <div class="max-w-2xl mx-auto text-center relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Online-Rechner
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Schnell, anonym & werbefrei – direkt im Browser
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-10">
+        Rechne direkt im Browser – kostenlos, anonym & ohne Werbung. Ideal für Schule, Alltag & unterwegs.
+      </p>
+
+      <form id="calcForm" class="bg-white p-8 rounded-2xl shadow-xl border-2 border-gold max-w-md mx-auto space-y-6" aria-label="Online-Rechner">
+        <div>
+          <label for="num1" class="block mb-1 font-semibold text-dark">Erste Zahl</label>
+          <input type="number" id="num1" required placeholder="z. B. 12.5" class="w-full border border-gray-300 rounded-lg px-4 py-2" />
+        </div>
+        <div>
+          <label for="operator" class="block mb-1 font-semibold text-dark">Rechenart</label>
+          <select id="operator" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraktion (-)</option>
+            <option value="*">Multiplikation (×)</option>
+            <option value="/">Division (÷)</option>
+          </select>
+        </div>
+        <div>
+          <label for="num2" class="block mb-1 font-semibold text-dark">Zweite Zahl</label>
+          <input type="number" id="num2" required placeholder="z. B. 3.14" class="w-full border border-gray-300 rounded-lg px-4 py-2" />
+        </div>
+        <button type="submit" class="bg-[#DCB957] hover:bg-[#c9a84d] text-white font-semibold py-2 px-6 rounded-xl transition">
+          Ergebnis berechnen
+        </button>
+        <div id="calcResult" class="mt-6 text-lg font-semibold text-dark" aria-live="polite"></div>
+      </form>
+
+      <p class="text-sm text-dark/60 mt-10 max-w-lg mx-auto">
+        Hinweis: Dieser Rechner unterstützt die vier Grundrechenarten. Für wissenschaftliche oder finanzielle Berechnungen empfehlen wir spezialisierte Tools.
+      </p>
+    </div>
+
+    <!-- Unterstützungs-Box -->
+    <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+      <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+      <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+      <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition">
+        Jetzt 2 CHF spenden
+      </a>
+      <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code> via PayPal</p>
+    </div>
+
+    <!-- Untere Deko-Welle (unter Content, kein Weissspalt) -->
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JS mit Cache-Busting -->
+    <script src={withVersion('/scripts/online-rechner.js')} defer></script>
+  </section>
+</Layout>

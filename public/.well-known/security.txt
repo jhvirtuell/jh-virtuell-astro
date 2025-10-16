@@ -1,0 +1,9 @@
+# security.txt für jh-virtuell.ch
+# Weitere Infos: https://securitytxt.org/
+
+Contact: mailto:info@jh-virtuell.ch
+Expires: 2025-12-31T23:59:59Z
+Preferred-Languages: de, en
+Canonical: https://jh-virtuell.ch/.well-known/security.txt
+Policy: https://jh-virtuell.ch/datenschutz
+Acknowledgements: https://jh-virtuell.ch/ueber-uns

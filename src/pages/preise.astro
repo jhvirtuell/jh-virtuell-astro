@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Preise – JH Virtuell" description="Transparente Preise für IT-Support, Wartung und Notfalldienst in der Schweiz. Fair, ehrlich und flexibel – für KMU, Selbstständige und Privatkunden.">
+  <!-- Stabiler Abschnitt: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative pt-8 md:pt-12 lg:pt-16 pb-16 px-4 bg-gradient-to-br from-gold/10 via-light to-white min-h-screen overflow-x-hidden">
+
+    <!-- (entfernt) Deko-Welle oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <div class="max-w-3xl mx-auto text-center mb-14 relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold drop-shadow">Preise für IT-Dienstleistungen</h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-2">Transparent, fair & ehrlich – klar kommuniziert</h2>
+      <p class="text-lg text-dark/80 mb-2 font-medium">
+        IT-Support und digitale Services zu klaren Konditionen. Alle Preise in CHF exkl. MwSt.
+      </p>
+    </div>
+
+    <!-- Preistabellen -->
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <!-- Stundensatz -->
+      <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl border-t-8 border-gold/80 p-8 flex flex-col items-center transition group">
+        <div class="text-gold text-lg font-bold uppercase tracking-widest mb-3">Standard-Stundensatz</div>
+        <div class="text-4xl font-extrabold text-dark mb-1">110 <span class="text-2xl font-bold text-gold">CHF</span></div>
+        <div class="text-dark/70 mb-2 text-base">pro Stunde</div>
+        <div class="text-dark/80 text-sm mb-2 text-center">Beratung, Support, Fernwartung & Digitalisierung</div>
+        <div class="text-xs text-gold/80">Pauschalen & Rabatte für Firmen möglich</div>
+      </div>
+
+      <!-- Notfall -->
+      <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl border-t-8 border-gold/80 p-8 flex flex-col items-center transition group">
+        <div class="text-gold text-lg font-bold uppercase tracking-widest mb-3">
+          Notfall & Pikett <span class="text-xs align-top font-normal text-dark/60">(24/7)</span>
+        </div>
+        <div class="font-bold text-base mb-1">Pikettpauschale: <span class="text-gold">80 CHF</span> <span class="text-xs text-dark/60">(pro Einsatz)</span></div>
+        <div class="font-bold text-base mb-1">Notfall-Stundensatz: <span class="text-gold">160 CHF</span></div>
+        <div class="text-xs text-dark/60 mb-2 text-center">Gilt ausserhalb Bürozeiten (08:00–17:00)<br />Pauschale zzgl. zum Stundensatz</div>
+      </div>
+
+      <!-- Anfahrt -->
+      <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl border-t-8 border-gold/80 p-8 flex flex-col items-center transition group">
+        <div class="text-gold text-lg font-bold uppercase tracking-widest mb-3">
+          Anfahrt <span class="text-xs text-dark/60">(Vor-Ort-Termine)</span>
+        </div>
+        <ul class="w-full text-base text-left mb-2 space-y-1">
+          <li><span class="font-bold">Bis 5 km:</span> <span class="text-gold font-semibold">kostenlos</span></li>
+          <li><span class="font-bold">Bis 10 km:</span> 20 CHF</li>
+          <li><span class="font-bold">Bis 20 km:</span> 40 CHF</li>
+          <li><span class="font-bold">Über 20 km:</span> Auf Anfrage</li>
+        </ul>
+        <div class="text-xs text-gold/70 w-full text-left">Bei Wartungspaketen inklusive oder stark reduziert.</div>
+      </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="max-w-2xl mx-auto text-center mt-12 mb-10 relative z-10">
+      <h3 class="text-2xl font-bold text-gold mb-3">Individuelle Angebote & Wartungsverträge</h3>
+      <p class="text-dark/80 mb-6 text-base">
+        Für regelmässige Wartung, Business-Kunden oder grössere Projekte bieten wir passende Pakete.
+        Lass dich kostenlos beraten – ohne Verpflichtung.
+      </p>
+      <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full text-lg shadow hover:opacity-90 transition animate-bounce-slow">
+        Jetzt Angebot anfordern
+      </a>
+    </div>
+
+    <!-- Untere Deko-Welle (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JSON-LD: OfferCatalog -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"OfferCatalog",
+        "name":"Preise – JH Virtuell",
+        "url":"https://jh-virtuell.ch/preise",
+        "itemListElement":[
+          {
+            "@type":"Offer",
+            "name":"Standard-Stundensatz",
+            "priceSpecification":{
+              "@type":"UnitPriceSpecification",
+              "price":"110","priceCurrency":"CHF","unitText":"HUR"
+            }
+          },
+          {
+            "@type":"Offer",
+            "name":"Notfall & Pikett",
+            "description":"Pikettpauschale zzgl. zum Notfall-Stundensatz",
+            "priceSpecification":[
+              {"@type":"UnitPriceSpecification","name":"Pikettpauschale","price":"80","priceCurrency":"CHF","unitText":"EACH"},
+              {"@type":"UnitPriceSpecification","name":"Notfall-Stundensatz","price":"160","priceCurrency":"CHF","unitText":"HUR"}
+            ]
+          },
+          {
+            "@type":"Offer",
+            "name":"Anfahrt (Vor-Ort)",
+            "description":"Zonenabhängige Anfahrtspauschalen",
+            "priceSpecification":[
+              {"@type":"UnitPriceSpecification","name":"Bis 10 km","price":"20","priceCurrency":"CHF","unitText":"EACH"},
+              {"@type":"UnitPriceSpecification","name":"Bis 20 km","price":"40","priceCurrency":"CHF","unitText":"EACH"},
+              {"@type":"UnitPriceSpecification","name":"Bis 5 km","price":"0","priceCurrency":"CHF","unitText":"EACH","eligibleQuantity":"<=5km"}
+            ]
+          }
+        ]
+      })}
+    </script>
+
+  </section>
+</Layout>

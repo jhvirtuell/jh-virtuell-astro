@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout
+  title="IT-Beratung, Digitalisierung & Support – JH Virtuell"
+  description="Dein Schweizer Partner für IT-Service, Digitalisierung, KI und persönliche Beratung. Jetzt kostenlose Erstberatung sichern.">
+
+  <!-- HERO – nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-dark text-white min-h-[70vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden pt-8 md:pt-12 lg:pt-16 pb-16">
+    <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true" style="background: linear-gradient(120deg, #1a202c 60%, #d4af37 200%); opacity:.08;"></div>
+
+    <img src="/logo-jh.webp" alt="JH Virtuell Logo" width="256" height="256" class="w-44 md:w-64 lg:w-72 mb-8 drop-shadow-lg" loading="lazy" />
+
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+      IT-Beratung, Digitalisierung & Support in der Schweiz.
+    </h1>
+
+    <p class="text-gold text-2xl md:text-3xl font-extrabold mb-6 tracking-tight">
+      Mit Leidenschaft. Mit Verstand. Für dich.
+    </p>
+
+    <p class="text-lg md:text-xl mb-4 max-w-2xl mx-auto font-medium text-gold/90">
+      Wir unterstützen Unternehmen und Privatpersonen – von professioneller Beratung über Digitalisierung bis zum zuverlässigen Technik-Support.
+      Effizienz, Datenschutz und Benutzerfreundlichkeit stehen im Mittelpunkt.
+    </p>
+    <p class="text-base md:text-lg text-light/80 max-w-2xl mx-auto leading-relaxed">
+      Egal ob KMU, Start-up oder Privatkunde – wir liefern Lösungen, die wirklich helfen. Direkt aus Stein am Rhein, für die ganze Schweiz.
+    </p>
+
+    <a href="#kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full mt-6 shadow hover:opacity-90 transition">
+      Jetzt unverbindlich beraten lassen
+    </a>
+
+    <div class="flex flex-wrap gap-3 mt-7 justify-center">
+      <span class="inline-block text-sm bg-gold/20 text-gold px-4 py-2 rounded-full font-semibold shadow">Kostenlose Erstberatung</span>
+      <span class="inline-block text-sm bg-gold/20 text-gold px-4 py-2 rounded-full font-semibold shadow">Schneller IT-Support</span>
+      <span class="inline-block text-sm bg-gold/20 text-gold px-4 py-2 rounded-full font-semibold shadow">Persönliche Betreuung</span>
+    </div>
+
+    <div class="flex gap-4 justify-center mt-8">
+      <a href="https://www.linkedin.com/shareArticle?url=https://jh-virtuell.ch" target="_blank" rel="noopener" aria-label="Teilen auf LinkedIn">
+        <img src="/linkedin.svg" alt="LinkedIn" class="w-6 h-6 hover:opacity-80 transition" loading="lazy" />
+      </a>
+    </div>
+
+    <!-- untere Deko des Hero (liegt unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f9f9f9" d="M0,0L1440,40L1440,60L0,60Z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section id="leistungen" class="relative py-20 bg-white text-dark">
+    <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gold/10 via-white/50 to-transparent pointer-events-none -z-10"></div>
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-6 text-gold">Unsere IT-Lösungen & Services</h2>
+    <p class="text-center max-w-xl mx-auto text-dark/70 mb-12">
+      Von IT-Support über Digitalisierung bis Website-Pflege: moderne, flexible Services für deinen Erfolg – regional & schweizweit.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <a href="/website-pflege" aria-label="Zur Website-Pflege" class="group">
+        <Card title="Website-Pflege & Wartung" description="Sicher, aktuell – und immer sichtbar. Wir halten deine Website up-to-date." />
+      </a>
+      <a href="/seo-sea" aria-label="Zu SEO & SEA" class="group">
+        <Card title="SEO / SEA" description="Mehr Reichweite: Sichtbar werden mit cleverer Optimierung & Werbung." />
+      </a>
+      <a href="/it-beratung" aria-label="Zu IT-Beratung & KI" class="group">
+        <Card title="IT-Beratung & KI" description="Strategisch, ehrlich & zukunftssicher – wir bringen dich nach vorn." />
+      </a>
+      <a href="/technik-support" aria-label="Zum Technik-Support" class="group">
+        <Card title="Technik-Support" description="Remote & vor Ort – schnelle Hilfe, echte Menschen." />
+      </a>
+      <a href="/smartphone-hilfe" aria-label="Zur Smartphone-Hilfe" class="group">
+        <Card title="Smartphone-Hilfe" description="Geräte einrichten, schützen & optimieren. Für alle Altersgruppen." />
+      </a>
+      <a href="/digitalisierung" aria-label="Zur Digitalisierung" class="group">
+        <Card title="Digitalisierung" description="Effizienz steigern, Prozesse automatisieren – heute für morgen." />
+      </a>
+    </div>
+
+    <!-- untere Deko der Sektion (liegt unter Content) -->
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f9f9f9" d="M0,0L1440,40L1440,60L0,60Z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- USP -->
+  <section class="relative py-20 bg-light px-6 text-dark">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 space-y-7">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gold mb-3">Was uns besonders macht</h2>
+        <ul class="space-y-4 text-lg">
+          <li class="flex items-start gap-3"><span class="text-gold text-2xl" aria-hidden="true">🚀</span> IT ist unsere Passion – wir leben digitale Lösungen.</li>
+          <li class="flex items-start gap-3"><span class="text-gold text-2xl" aria-hidden="true">🤝</span> Beratung auf Augenhöhe – wir hören zu und handeln.</li>
+          <li class="flex items-start gap-3"><span class="text-gold text-2xl" aria-hidden="true">💡</span> Neugier & Innovation – für die besten Lösungen.</li>
+          <li class="flex items-start gap-3"><span class="text-gold text-2xl" aria-hidden="true">📈</span> Nachhaltiger Erfolg – gemeinsam wachsen.</li>
+          <li class="flex items-start gap-3"><span class="text-gold text-2xl" aria-hidden="true">🏅</span> Verantwortung & Ehrlichkeit – darauf kannst du bauen.</li>
+        </ul>
+      </div>
+      <div class="flex-1 flex flex-col items-center">
+        <img src="/logo-jh.webp" alt="JH Virtuell" class="w-44 sm:w-52 mb-4" loading="lazy" />
+        <span class="block text-dark/70 text-sm mt-2">Mit Leidenschaft & Herz für dich da.</span>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,0L1440,40L1440,60L0,60Z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Kontakt CTA -->
+  <section id="kontakt" class="py-20 bg-gradient-to-br from-gold/10 via-white to-white px-6 text-dark text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Jetzt individuelle IT-Beratung starten</h2>
+      <p class="text-base sm:text-lg mb-6">
+        Wir antworten innerhalb von 24h. Lass uns gemeinsam Zukunft gestalten!
+      </p>
+      <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full shadow hover:opacity-90 transition">
+        Kontaktformular öffnen
+      </a>
+    </div>
+  </section>
+
+  <!-- JSON-LD: WebSite + Organization -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "name":"JH Virtuell",
+      "url":"https://jh-virtuell.ch",
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"https://jh-virtuell.ch/?s={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
+    })}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"JH Virtuell KLG",
+      "url":"https://jh-virtuell.ch",
+      "logo":"https://jh-virtuell.ch/logo-jh.webp",
+      "contactPoint":[{
+        "@type":"ContactPoint",
+        "contactType":"customer support",
+        "email":"info@jh-virtuell.ch",
+        "telephone":"+41 78 684 40 17",
+        "areaServed":"CH",
+        "availableLanguage":["de","en"]
+      }],
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Chlini Schanz 31",
+        "postalCode":"8260",
+        "addressLocality":"Stein am Rhein",
+        "addressCountry":"CH"
+      }
+    })}
+  </script>
+</Layout>

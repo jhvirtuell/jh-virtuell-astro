@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="IT-Beratung & KI-Lösungen – Stein am Rhein, Schaffhausen & Schweiz | JH Virtuell"
+  description="Strategische IT-Beratung, Automatisierung und Künstliche Intelligenz für Unternehmen, Selbständige & Privatkunden. Ehrlich, innovativ und persönlich – Ihr Weg in die digitale Zukunft.">
+
+  <!-- Stabiler Abschnitt: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative pt-8 md:pt-12 lg:pt-16 pb-16 px-4 bg-gradient-to-b from-gold/10 via-light to-white min-h-screen overflow-x-hidden">
+
+    <!-- (entfernt) Deko-Bogen oben → verursachte Weisskante auf Ultra-Wide -->
+
+    <div class="max-w-3xl mx-auto text-center mb-12 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">IT-Beratung & KI-Lösungen</h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">Analyse, Strategie, Umsetzung – persönlich aus der Schweiz</h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-5 leading-relaxed">
+        Mit moderner IT-Strategie und Künstlicher Intelligenz (KI) machen wir Ihr Unternehmen <strong>effizienter, digitaler und erfolgreicher</strong>.
+      </p>
+      <span class="inline-block bg-gold/10 text-gold px-5 py-2 rounded-full font-semibold text-sm shadow mb-1">
+        Von der Analyse bis zur Umsetzung – alles aus einer Hand.
+      </span>
+    </div>
+
+    <!-- Vorteile / Features -->
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative z-10">
+      <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col justify-center hover:scale-[1.02] hover:shadow-2xl transition group animate-fadeInUp">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl">🤖</span>
+          <h3 class="text-xl font-bold text-gold">KI in der Praxis</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 mb-4 text-base">
+          <li>Künstliche Intelligenz für Automatisierung & Optimierung</li>
+          <li>KI-Tools für Text, Bilder, Auswertung & Organisation</li>
+          <li>Automatisierte E-Mails, Reportings, Kundenkommunikation</li>
+          <li>Einführung & Schulung: KI im Alltag nutzen (z. B. ChatGPT, Automationen)</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Individuell, sicher und DSGVO-konform implementiert.</div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col justify-center hover:scale-[1.02] hover:shadow-2xl transition group animate-fadeInUp">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl">🧑‍💻</span>
+          <h3 class="text-xl font-bold text-gold">IT-Beratung für KMU & Privatkunden</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 mb-4 text-base">
+          <li>Analyse von IT-Landschaft & Digitalisierungspotenzial</li>
+          <li>Strategische Beratung: Effizienzsteigerung, Kostenreduktion, Sicherheit</li>
+          <li>Optimierung von Workflows, Cloud-Lösungen, Backups</li>
+          <li>Persönliche Betreuung – ehrlich, unabhängig, langfristig</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Von der ersten Idee bis zur erfolgreichen Umsetzung an deiner Seite.</div>
+      </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="max-w-2xl mx-auto text-center mt-12 mb-10 relative z-10">
+      <h3 class="text-2xl font-bold text-gold mb-3">Digitalisierung starten – Zukunft sichern</h3>
+      <p class="text-dark/80 mb-6 text-base">
+        Egal ob du gerade erst beginnst oder deine bestehende IT-Struktur optimieren willst: Wir beraten dich unabhängig & verständlich – für KMU, Startups & Privatpersonen.
+      </p>
+      <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full text-lg shadow hover:opacity-90 transition animate-bounce-slow">
+        Kostenloses Erstgespräch anfragen
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <div class="max-w-3xl mx-auto mt-16 mb-6 relative z-10">
+      <h3 class="text-xl font-bold mb-6 text-gold text-center">FAQ – IT-Beratung & KI in der Praxis</h3>
+      <div class="space-y-6 text-base">
+        <div>
+          <h4 class="font-semibold text-dark">Was bringt mir KI in meinem Unternehmen?</h4>
+          <p class="text-dark/80">Mit KI-Tools sparst du Zeit, gewinnst neue Einblicke und kannst viele Prozesse automatisieren – von einfachen Auswertungen bis zu komplexer Kundenkommunikation.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-dark">Macht ihr auch Workshops oder Schulungen?</h4>
+          <p class="text-dark/80">Ja! Wir führen individuelle KI-Workshops und IT-Schulungen durch – persönlich vor Ort oder online.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-dark">Ist KI auch für kleine Firmen oder Privatleute sinnvoll?</h4>
+          <p class="text-dark/80">Absolut! Viele Automationen lohnen sich schon ab wenigen Aufgaben – und der Einstieg ist günstiger als viele denken. Wir beraten fair und transparent.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Untere Deko-Welle (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JSON-LD: Service + FAQPage -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "name":"IT-Beratung & KI-Lösungen",
+        "areaServed":{"@type":"Country","name":"Schweiz"},
+        "provider":{"@type":"Organization","name":"JH Virtuell","url":"https://jh-virtuell.ch"},
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF","description":"Kostenloses Erstgespräch für KMU, Startups & Privatpersonen"}
+      })}
+    </script>
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"Was bringt mir KI in meinem Unternehmen?","acceptedAnswer":{"@type":"Answer","text":"Mit KI-Tools sparen Unternehmen Zeit, gewinnen neue Einblicke und automatisieren Prozesse – von Analysen bis Kundenkommunikation."}},
+          {"@type":"Question","name":"Macht ihr auch Workshops oder Schulungen?","acceptedAnswer":{"@type":"Answer","text":"Ja, wir bieten individuelle KI-Workshops und IT-Schulungen an – vor Ort oder online."}},
+          {"@type":"Question","name":"Ist KI auch für kleine Firmen oder Privatleute sinnvoll?","acceptedAnswer":{"@type":"Answer","text":"Auf jeden Fall. Viele Automationen lohnen sich bereits bei wenigen Aufgaben. Wir beraten fair und transparent."}}
+        ]
+      })}
+    </script>
+
+  </section>
+</Layout>

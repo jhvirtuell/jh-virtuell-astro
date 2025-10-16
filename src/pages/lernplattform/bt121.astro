@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+---
+
+<Layout title="BT121 Prüfung – Interaktives Quiz" description="Teste dein Wissen für die Berufskundeprüfung BT121. Interaktives Online-Quiz mit direktem Feedback – kostenlos & mobil optimiert.">
+  <section class="pt-24 pb-20 px-6 bg-dark text-light min-h-screen">
+    <div class="max-w-2xl mx-auto text-center mb-12">
+      <span class="inline-block bg-gold/10 text-gold px-5 py-1 rounded-full uppercase text-xs font-semibold tracking-widest mb-6 shadow">
+        Interaktives Quiz · BT121 Berufskunde
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-5 text-gold tracking-tight drop-shadow">
+        BT121 Prüfung – Quiztraining
+      </h1>
+      <p class="text-lg sm:text-xl text-light/80 leading-relaxed mb-4">
+        Übe mit realistischen Prüfungsfragen zur BT121 Berufskundeprüfung.<br />
+        Direktes Feedback – komplett kostenlos, anonym und mobil optimiert.
+      </p>
+      <div class="flex justify-center">
+        <div class="rounded-2xl px-5 py-3 text-gold bg-light/10 font-semibold shadow mb-6">
+          Starte jetzt und sichere dir den Prüfungserfolg!
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <div id="app" class="w-full max-w-3xl rounded-xl bg-light/10 p-6 sm:p-10 shadow-2xl"></div>
+    </div>
+  </section>
+
+  <script type="module" src="/scripts/bt121-quiz.js"></script>
+</Layout>^

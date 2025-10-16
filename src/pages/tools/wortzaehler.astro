@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+import { withVersion } from '../../utils/version.ts';
+---
+
+<Layout
+  title="Wort- & Zeichenzähler – Echtzeit-Analyse für Texte | JH Virtuell"
+  description="Zähle Wörter, Zeichen & Absätze live – ideal für Social Media, SEO, Uni oder Blog. Ohne Werbung & 100 % anonym.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen text-center">
+
+    <!-- (entfernt) Deko-Bogen oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Zeichen- & Wortzähler
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Live & anonym – perfekt für Social, Blog & SEO
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-10">
+        Live-Wortanzahl, Zeichenzahl und Absätze – ideal für Texte, Social Media, SEO oder Hausarbeiten.
+      </p>
+
+      <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border-2 border-gold space-y-6 text-left">
+        <label class="sr-only" for="textInput">Text eingeben</label>
+        <textarea
+          id="textInput"
+          rows="10"
+          placeholder="Text hier eingeben oder einfügen…"
+          class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-y"
+        ></textarea>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center font-semibold text-dark">
+          <div><span class="block text-2xl" id="wordCount">0</span>Wörter</div>
+          <div><span class="block text-2xl" id="charCount">0</span>Zeichen</div>
+          <div><span class="block text-2xl" id="paraCount">0</span>Absätze</div>
+        </div>
+
+        <button
+          id="copyBtn"
+          class="mt-4 bg-[#DCB957] hover:bg-[#c9a84d] text-white font-semibold py-2 px-6 rounded-xl transition"
+          aria-label="Text in Zwischenablage kopieren"
+        >
+          Text kopieren
+        </button>
+        <div id="copyStatus" class="text-sm text-green-600 mt-2 hidden">✅ In Zwischenablage kopiert</div>
+      </div>
+
+      <!-- Infobox SEO -->
+      <div class="bg-white border-l-4 border-gold px-6 py-5 mt-16 text-left rounded-xl shadow-md max-w-2xl mx-auto text-dark/90 text-sm sm:text-base">
+        <h3 class="text-lg font-bold mb-2 text-gold">Wofür braucht man einen Wortzähler?</h3>
+        <p class="mb-2">Ein Wort- und Zeichenzähler hilft dir, Texte für Social Media, Blogbeiträge, Hausarbeiten oder SEO-Anforderungen gezielt zu optimieren. Gerade bei begrenzten Zeichenzahlen – etwa auf X (Twitter), TikTok, Instagram oder Google-Snippets – ist eine Live-Auswertung extrem nützlich.</p>
+        <p>Mit diesem Tool behältst du jederzeit den Überblick – <strong>komplett offline & werbefrei</strong>.</p>
+      </div>
+
+      <!-- Spendenbox -->
+      <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+        <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+        <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+        <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition">
+          Jetzt 2 CHF spenden
+        </a>
+        <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code> via PayPal</p>
+      </div>
+
+      <p class="text-sm text-dark/60 mt-10 max-w-lg mx-auto">
+        Hinweis: Dieses Tool läuft direkt im Browser und speichert nichts – perfekt für Datenschutz, Schule oder Arbeit.
+      </p>
+    </div>
+
+    <!-- (behalten) Deko-Bogen unten – unter Content, kein Weissspalt -->
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" /></svg>
+    </div>
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"SoftwareApplication",
+        "name":"Wort- & Zeichenzähler",
+        "applicationCategory":"Utility",
+        "operatingSystem":"All",
+        "url":"https://jh-virtuell.ch/tools/wortzaehler",
+        "description":"Wörter, Zeichen & Absätze live zählen – anonym, offline & werbefrei. Ideal für Social, Blog & SEO.",
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}
+      })}
+    </script>
+
+    <!-- JS mit Cache-Busting -->
+    <script src={withVersion('/scripts/wortzaehler.js')} defer></script>
+  </section>
+</Layout>

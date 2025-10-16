@@ -1,0 +1,23 @@
+{
+  "name": "JH Virtuell",
+  "short_name": "JH Virtuell",
+  "description": "Effiziente IT-Beratung, Support & Automatisierung",
+  "lang": "de-CH",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#d4af37",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo-jh.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { withVersion } from "../utils/version.ts";
+
+const { title, description } = Astro.props;
+const currentUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "/logo-jh.webp";
+---
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="seobility" content="9e2a071672b2807fff9d7a61447c5130" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#d4af37" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="JH Virtuell" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="JH Virtuell Logo" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:url" content={currentUrl.toString()} />
+    <link rel="canonical" href={currentUrl.toString()} />
+
+    <!-- Icons & Fonts -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touchicon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3494064184729083"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- DSGVO-konformes Tracking mit Umami -->
+    <script
+      defer
+      src={withVersion("https://cloud.umami.is/script.js")}
+      data-website-id="55622a39-8363-47d8-8b91-584811f333d8"
+    ></script>
+  </head>
+  <body class="bg-light text-dark font-sans antialiased">
+    <Header />
+    <!-- fester Spacer in Header-Höhe, verhindert Weißlücke auf Ultra-Wide -->
+    <div aria-hidden="true" class="h-20 md:h-24 bg-dark"></div>
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer />
+    <slot name="scripts" is:raw />
+  </body>
+</html>

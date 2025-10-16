@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+import { withVersion } from '../../utils/version.ts';
+---
+
+<Layout
+  title="IBAN-Prüfer – schnell & kostenlos IBANs validieren | JH Virtuell"
+  description="Mit dem IBAN-Prüfer von JH Virtuell kannst du IBANs sofort online auf Gültigkeit prüfen. Kostenlos, werbefrei & DSGVO-konform. Ideal für Rechnungen, Buchhaltung & Alltag.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen text-center">
+
+    <!-- (entfernt) Deko-Bogen oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <div class="max-w-xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        IBAN-Prüfer
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Schnell, sicher & anonym – direkt im Browser
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-10">
+        Prüfe jetzt deine IBAN auf Gültigkeit – kostenlos, sicher & ohne Speicherung. Ideal für Buchhaltung, Überweisungen & Kontrolle.
+      </p>
+
+      <form
+        id="ibanForm"
+        class="space-y-6 bg-white p-8 rounded-2xl shadow-xl border-2 border-gold max-w-md mx-auto text-left"
+        aria-label="IBAN-Prüfer Formular"
+      >
+        <div>
+          <label for="iban" class="block mb-1 font-semibold text-dark">IBAN eingeben</label>
+          <input
+            type="text"
+            id="iban"
+            name="iban"
+            required
+            inputmode="text"
+            autocomplete="off"
+            placeholder="z. B. CH93 0076 2011 6238 5295 7"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2"
+          />
+        </div>
+
+        <button type="submit" class="bg-[#DCB957] hover:bg-[#c9a84d] text-white font-semibold py-2 px-6 rounded-xl transition">
+          IBAN prüfen
+        </button>
+
+        <div id="ibanResult" class="mt-6 text-lg font-semibold text-dark" aria-live="polite" tabindex="-1"></div>
+
+        <div id="copyWrapper" class="mt-4 hidden">
+          <button type="button" id="copyIban" class="text-sm text-gold hover:underline">📋 IBAN kopieren</button>
+          <span id="copyFeedback" class="text-sm text-green-600 ml-2 hidden">Kopiert!</span>
+        </div>
+
+        <div id="bankName" class="text-sm text-dark/70 mt-4 hidden"></div>
+      </form>
+
+      <p class="text-sm text-dark/60 mt-10 max-w-lg mx-auto">
+        Hinweis: Diese IBAN-Prüfung basiert auf der offiziellen Modulo-97-Validierung. Die Prüfung ersetzt keine Bankverifizierung.
+      </p>
+    </div>
+
+    <!-- Unterstützungs-Box -->
+    <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+      <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+      <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+      <a
+        href="https://www.paypal.me/jhvirtuell/2"
+        target="_blank"
+        rel="noopener"
+        class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition"
+      >
+        Jetzt 2 CHF spenden
+      </a>
+      <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code> via PayPal</p>
+    </div>
+
+    <!-- (behalten) Deko-Bogen unten – unter Content, kein Weissspalt -->
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"SoftwareApplication",
+        "name":"IBAN-Prüfer",
+        "applicationCategory":"FinanceApplication",
+        "operatingSystem":"All",
+        "url":"https://jh-virtuell.ch/tools/iban-pruefer",
+        "description":"IBAN sofort online prüfen – kostenlos, anonym & ohne Speicherung. Ideal für Rechnungen & Buchhaltung.",
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}
+      })}
+    </script>
+
+    <!-- JS mit Cache-Busting -->
+    <script src={withVersion('/scripts/iban-pruefer.js')} defer></script>
+  </section>
+</Layout>

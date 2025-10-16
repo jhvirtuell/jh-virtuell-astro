@@ -1,0 +1,8 @@
+# robots.txt für jh-virtuell.ch
+
+User-agent: *
+Disallow: /node_modules/
+Disallow: /private/
+Allow: /
+
+Sitemap: https://jh-virtuell.ch/sitemap-index.xml

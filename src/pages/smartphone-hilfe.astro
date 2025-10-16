@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="Smartphone-Hilfe – Einrichtung, Schutz & Beratung | JH Virtuell"
+  description="Smartphone-Hilfe in Stein am Rhein & Schweiz: Geräte einrichten, schützen, optimieren – für Senioren, Eltern, Firmen & Privatkunden. Persönlich, geduldig & sicher.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section id="smartphone-hilfe" class="relative pt-8 md:pt-12 lg:pt-16 pb-16 px-4 bg-gradient-to-b from-gold/10 via-light to-white min-h-screen overflow-x-hidden">
+
+    <!-- (entfernt) Deko-Bogen oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Smartphone-Hilfe für alle Generationen
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Einrichtung, Schutz & verständliche Beratung – vor Ort & per Fernhilfe
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-6 leading-relaxed">
+        Egal ob Android oder iPhone: Wir unterstützen dich beim Einrichten, Absichern und Verstehen deines Smartphones – mit Geduld und ohne Fachchinesisch.
+      </p>
+      <span class="inline-block bg-gold/10 text-gold px-5 py-2 rounded-full font-semibold text-sm shadow mb-4">
+        Persönliche Hilfe – auch für Senioren & absolute Einsteiger
+      </span>
+    </div>
+
+    <!-- Cards: Anwendungen & Zielgruppen -->
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-16 relative z-10">
+      <div class="bg-white rounded-2xl shadow-xl p-10 hover:shadow-2xl transition group">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl" aria-hidden="true">📱</span>
+          <h3 class="text-xl font-bold text-gold">Einrichtung & Sicherheit</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 text-base mb-4">
+          <li>Smartphone einrichten, erklären & optimieren</li>
+          <li>Schutz vor Betrug, Phishing & schädlichen Apps</li>
+          <li>Cloud, Datensicherung & Backup</li>
+          <li>Apps verstehen, Updates durchführen</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Individuell & verständlich erklärt – auf deinem Gerät.</div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-xl p-10 hover:shadow-2xl transition group">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-gold text-2xl" aria-hidden="true">👨‍👩‍👧‍👦</span>
+          <h3 class="text-xl font-bold text-gold">Support für alle Altersgruppen</h3>
+        </div>
+        <ul class="list-disc list-inside text-dark/90 space-y-2 text-base mb-4">
+          <li>Seniorenhilfe: Geduldig & schrittweise</li>
+          <li>Kindersicherung & Familienkonfiguration</li>
+          <li>WhatsApp, Fotos, E-Mails – einfach erklärt</li>
+          <li>Datenumzug beim neuen Gerät</li>
+        </ul>
+        <div class="text-dark/70 text-sm">Vor Ort in Stein am Rhein oder bequem per Fernhilfe.</div>
+      </div>
+    </div>
+
+    <!-- Weitere Vorteile -->
+    <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-10 mb-10 relative z-10">
+      <div class="bg-white rounded-2xl shadow p-8 h-full">
+        <h3 class="text-gold text-lg font-bold mb-2">Deine Vorteile mit JH Virtuell</h3>
+        <ul class="space-y-2 text-dark/90 text-base">
+          <li>Verständliche Sprache ohne Technikgebrabbel</li>
+          <li>Individuelle Begleitung, keine Massenabfertigung</li>
+          <li>Vor-Ort-Service in Schaffhausen & Umgebung</li>
+          <li>Remote-Hilfe für die ganze Schweiz</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-8 h-full">
+        <h3 class="text-gold text-lg font-bold mb-2">Wann wir helfen</h3>
+        <ul class="space-y-2 text-dark/90 text-base">
+          <li>Beim Umstieg auf ein neues Gerät</li>
+          <li>Wenn du dich unsicher fühlst mit deinem Handy</li>
+          <li>Bei komischen Fehlermeldungen oder Werbung</li>
+          <li>Für Eltern, die das Handy ihrer Kinder absichern wollen</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="max-w-2xl mx-auto text-center mt-14 mb-14 relative z-10">
+      <h3 class="text-2xl font-bold text-gold mb-3">Jetzt Smartphone-Hilfe anfragen</h3>
+      <p class="text-dark/80 mb-6 text-base">
+        Wir machen Technik einfach – mit Herz, Geduld und Erfahrung. Ob bei dir zuhause oder digital per Fernwartung: Wir helfen dir gerne!
+      </p>
+      <a href="/kontakt" class="inline-block bg-gold text-dark font-bold px-8 py-3 rounded-full text-lg shadow hover:opacity-90 transition animate-bounce-slow">
+        Kontaktformular öffnen
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" class="max-w-3xl mx-auto mt-16 mb-6 relative z-10">
+      <h3 class="text-xl font-bold mb-6 text-gold text-center">FAQ – Smartphone-Hilfe</h3>
+      <div class="space-y-4 text-base">
+        <details class="bg-white rounded-lg shadow px-4 py-3">
+          <summary class="font-semibold text-dark cursor-pointer">Was kostet eure Smartphone-Hilfe?</summary>
+          <p class="text-dark/80 mt-2">Unsere Leistungen sind transparent und fair bepreist. Eine Übersicht findest du auf der <a href="/preise" class="text-gold font-semibold hover:underline">Preisseite</a>.</p>
+        </details>
+        <details class="bg-white rounded-lg shadow px-4 py-3">
+          <summary class="font-semibold text-dark cursor-pointer">Brauche ich technische Vorkenntnisse?</summary>
+          <p class="text-dark/80 mt-2">Nein. Wir erklären alles Schritt für Schritt – auch für absolute Einsteiger.</p>
+        </details>
+        <details class="bg-white rounded-lg shadow px-4 py-3">
+          <summary class="font-semibold text-dark cursor-pointer">Ist der Service auch für Senioren?</summary>
+          <p class="text-dark/80 mt-2">Ja – besonders! Wir nehmen uns Zeit, wiederholen bei Bedarf und bauen Ängste ab.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- Unterer Deko-Bogen (unter Content, kein Weissspalt) -->
+    <div class="absolute left-0 bottom-0 w-full pointer-events-none z-0" aria-hidden="true" role="presentation">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" />
+      </svg>
+    </div>
+
+    <!-- JSON-LD: Service + FAQPage -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "name":"Smartphone-Hilfe – Einrichtung, Schutz & Beratung",
+        "areaServed":{"@type":"Country","name":"Schweiz"},
+        "provider":{"@type":"Organization","name":"JH Virtuell","url":"https://jh-virtuell.ch"},
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF","description":"Kostenloses Erstgespräch – persönliche Hilfe vor Ort & per Fernhilfe"}
+      })}
+    </script>
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"Was kostet eure Smartphone-Hilfe?","acceptedAnswer":{"@type":"Answer","text":"Die Preise sind transparent und fair. Eine Übersicht findest du auf der Preisseite; alternativ erhältst du ein individuelles Angebot."}},
+          {"@type":"Question","name":"Brauche ich technische Vorkenntnisse?","acceptedAnswer":{"@type":"Answer","text":"Nein. Wir erklären alles Schritt für Schritt – ideal auch für absolute Einsteiger."}},
+          {"@type":"Question","name":"Ist der Service auch für Senioren?","acceptedAnswer":{"@type":"Answer","text":"Ja, besonders. Wir nehmen uns Zeit, wiederholen bei Bedarf und bauen Ängste ab – geduldig & verständlich."}}
+        ]
+      })}
+    </script>
+
+  </section>
+</Layout>

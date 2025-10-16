@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+import { withVersion } from '../../utils/version.ts';
+---
+
+<Layout
+  title="Digitale Uhrzeit – aktuelle Zeit mit Sekunden | JH Virtuell"
+  description="Sieh dir die aktuelle Uhrzeit live an – präzise, anonym und mit Sekundenanzeige. Ideal für Schule, Planung oder Technik-Fans. DSGVO-konform & werbefrei.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen text-center">
+
+    <!-- (entfernt) Deko oben – verursachte Weisskante auf Ultra-Wide -->
+
+    <div class="max-w-xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gold tracking-tight drop-shadow">
+        Digitale Uhrzeit
+      </h1>
+      <h2 class="text-lg sm:text-xl font-semibold text-dark/70 mb-3">
+        Schnell, anonym & werbefrei – direkt im Browser
+      </h2>
+      <p class="text-lg sm:text-xl text-dark/80 mb-10">
+        Aktuelle Uhrzeit mit Sekunden, optional mit Millisekunden & ISO-Format. Live – ohne Datenübertragung oder Tracking.
+      </p>
+
+      <div class="bg-white p-10 rounded-2xl shadow-xl border-2 border-gold inline-block space-y-4">
+        <div id="clock" class="text-5xl sm:text-6xl font-mono font-bold text-dark tracking-widest" aria-live="polite">
+          --:--:--
+        </div>
+
+        <div class="w-full bg-light rounded h-2 overflow-hidden">
+          <div id="second-bar" class="bg-gold h-full w-0 transition-all duration-100 ease-linear"></div>
+        </div>
+
+        <div class="text-sm text-dark/60">
+          <label for="format" class="mr-2">Anzeigeformat:</label>
+          <select id="format" class="border rounded px-2 py-1">
+            <option value="24h">24h (HH:MM:SS)</option>
+            <option value="iso">ISO 8601</option>
+            <option value="ms">Mit Millisekunden</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="text-sm text-dark/60 mt-10 max-w-lg mx-auto">
+        Diese Uhr basiert rein auf deinem Gerät – keine Datenübertragung, kein Tracking, 100 % datenschutzfreundlich.
+      </p>
+    </div>
+
+    <!-- Spendenbox -->
+    <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+      <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+      <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+      <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition">
+        Jetzt 2 CHF spenden
+      </a>
+      <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code> via PayPal</p>
+    </div>
+
+    <!-- (behalten) Deko unten – unter Content, kein Weissspalt -->
+    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M0,10Q720,70 1440,10L1440,70L0,70Z" /></svg>
+    </div>
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"SoftwareApplication",
+        "name":"Digitale Uhrzeit",
+        "applicationCategory":"Utility",
+        "operatingSystem":"All",
+        "url":"https://jh-virtuell.ch/tools/digitale-uhrzeit",
+        "description":"Aktuelle Uhrzeit mit Sekunden (optional Millisekunden & ISO) – live, anonym & werbefrei.",
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}
+      })}
+    </script>
+
+    <!-- JS mit Cache-Busting -->
+    <script src={withVersion('/scripts/digitale-uhrzeit.js')} defer></script>
+  </section>
+</Layout>

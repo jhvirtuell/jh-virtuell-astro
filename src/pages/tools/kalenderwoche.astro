@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+import { withVersion } from '../../utils/version.ts';
+---
+
+<Layout
+  title="Welche Kalenderwoche ist heute? KW-Rechner 2025 | JH Virtuell"
+  description="Welche Kalenderwoche ist heute? Sofort aktuelle KW berechnen – inklusive Start- und Enddatum. Schnell & kostenlos von JH Virtuell.">
+
+  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen">
+
+    <!-- Info-Karte (wird per JS aktualisiert) -->
+    <section class="max-w-xl mx-auto text-center bg-white border-2 border-gold rounded-2xl p-10 shadow-lg mb-12">
+      <p id="kw-label" class="text-dark/70 text-base mb-2">Heute ist:</p>
+      <h2 id="kw-number" aria-labelledby="kw-label" class="text-5xl sm:text-6xl font-extrabold text-gold drop-shadow mb-2">KW …</h2>
+      <p id="kw-heute" class="text-sm text-dark/50 mb-4">(…)</p>
+      <p id="kw-zeitraum" class="text-base text-dark">Gültig von … bis …</p>
+    </section>
+
+    <!-- Fortschrittsbox (Live im Browser) -->
+    <aside id="kw-details" class="bg-[#fdf9ef] border border-gold rounded-xl max-w-xl mx-auto p-6 text-center shadow">
+      <p class="text-dark/90 text-sm sm:text-base mb-4">⏳ Seit Wochenbeginn vergangen:</p>
+      <div class="text-dark font-semibold space-y-1 text-sm sm:text-base">
+        <div><span id="tage">0</span> Tage</div>
+        <div><span id="stunden">0</span> Stunden</div>
+        <div><span id="minuten">0</span> Minuten</div>
+        <div><span id="sekunden">0</span> Sekunden</div>
+      </div>
+      <progress id="fortschritt-balken" value="0" max="100"
+        class="w-full h-3 mt-6 rounded overflow-hidden transition-all duration-500 ease-in-out [&::-webkit-progress-value]:bg-gold [&::-webkit-progress-bar]:bg-light"></progress>
+      <p id="fortschritt-label" class="text-xs italic text-dark/50 mt-1">Woche zu 0% abgeschlossen</p>
+    </aside>
+
+    <!-- Spendenbox -->
+    <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+      <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
+      <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
+      <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" aria-label="2 CHF via PayPal spenden"
+         class="inline-block bg-gold hover:bg-[#c9a84d] text-white font-semibold px-6 py-2 rounded-xl shadow transition">
+        Jetzt 2 CHF spenden
+      </a>
+      <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code></p>
+    </div>
+  </section>
+
+  <!-- Strukturierte Daten -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kalenderwochen-Rechner",
+    "url": "https://jh-virtuell.ch/tools/kalenderwoche",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "creator": { "@type": "Organization", "name": "JH Virtuell", "url": "https://jh-virtuell.ch" },
+    "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "CHF" },
+    "description": "Berechne schnell und kostenlos die aktuelle Kalenderwoche (KW) inklusive Start- und Enddatum. Perfekt für Planung, Projekte und Verträge.",
+    "inLanguage": "de-CH",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- JS mit Cache-Busting -->
+  <script src={withVersion('/scripts/kalenderwoche.js')} defer></script>
+</Layout>

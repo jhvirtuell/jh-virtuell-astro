@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/DefaultLayout.astro';
+---
+
+<Layout
+  title="QR-Rechnung Generator – Einzahlungsschein als PDF erstellen | JH Virtuell"
+  description="Erstelle deine Schweizer QR-Rechnung direkt im Browser. Einfach IBAN, Empfänger, Zahler, Betrag und Referenz eingeben – sofort gültiges PDF mit QR-Code herunterladen.">
+
+  <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-12 pb-20 px-4 min-h-screen">
+    <div class="max-w-5xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 text-gold tracking-tight drop-shadow text-center">
+        QR-Rechnung Generator
+      </h1>
+      <p class="text-lg sm:text-xl text-dark/80 mb-10 text-center">
+        Erstelle eine vollständige Schweizer QR-Rechnung – <strong>kostenlos, anonym & ohne Anmeldung</strong>.
+      </p>
+
+      <!-- Formular -->
+      <form id="qrForm" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-2xl shadow-xl border-2 border-gold text-left max-w-5xl mx-auto">
+
+        <!-- Konto / Zahlbar an -->
+        <fieldset class="space-y-4">
+          <legend class="text-lg font-bold text-gold mb-2">Konto / Zahlbar an</legend>
+          <label class="block">IBAN <input type="text" name="iban" required placeholder="CHxx ..." class="w-full border rounded px-3 py-2" /></label>
+          <label class="block">Name <input type="text" name="kontoName" required class="w-full border rounded px-3 py-2" /></label>
+          <label class="block">Strasse / Nr. <input type="text" name="kontoStrasse" required class="w-full border rounded px-3 py-2" /></label>
+          <div class="grid grid-cols-3 gap-3">
+            <input type="text" name="kontoPlz" placeholder="PLZ" required class="border rounded px-3 py-2" />
+            <input type="text" name="kontoOrt" placeholder="Ort" required class="col-span-2 border rounded px-3 py-2" />
+          </div>
+          <input type="text" name="kontoLand" placeholder="CH" required class="border rounded px-3 py-2" />
+        </fieldset>
+
+        <!-- Zahler -->
+        <fieldset class="space-y-4">
+          <legend class="text-lg font-bold text-gold mb-2">Zahler</legend>
+          <label class="block">Name <input type="text" name="zahlerName" required class="w-full border rounded px-3 py-2" /></label>
+          <label class="block">Strasse / Nr. <input type="text" name="zahlerStrasse" required class="w-full border rounded px-3 py-2" /></label>
+          <div class="grid grid-cols-3 gap-3">
+            <input type="text" name="zahlerPlz" placeholder="PLZ" required class="border rounded px-3 py-2" />
+            <input type="text" name="zahlerOrt" placeholder="Ort" required class="col-span-2 border rounded px-3 py-2" />
+          </div>
+          <input type="text" name="zahlerLand" placeholder="CH" required class="border rounded px-3 py-2" />
+        </fieldset>
+
+        <!-- Zahlungsinformationen -->
+        <fieldset class="space-y-4 md:col-span-2">
+          <legend class="text-lg font-bold text-gold mb-2">Zahlungsinformationen</legend>
+          <div class="grid grid-cols-2 gap-4">
+            <select name="waehrung" class="border rounded px-3 py-2">
+              <option value="CHF">CHF</option>
+              <option value="EUR">EUR</option>
+            </select>
+            <input type="number" step="0.01" name="betrag" required placeholder="Betrag" class="border rounded px-3 py-2" />
+          </div>
+          <input type="text" name="referenz" placeholder="Referenz (optional)" class="w-full border rounded px-3 py-2" />
+          <input type="text" name="zusatz" placeholder="Zusatzinformationen" class="w-full border rounded px-3 py-2" />
+        </fieldset>
+
+        <!-- Format -->
+        <fieldset class="space-y-4 md:col-span-2">
+          <legend class="text-lg font-bold text-gold mb-2">Rechnungsformat</legend>
+          <div class="grid grid-cols-2 gap-4">
+            <select name="sprache" class="border rounded px-3 py-2">
+              <option value="DE">Deutsch</option>
+              <option value="FR">Französisch</option>
+              <option value="IT">Italienisch</option>
+              <option value="EN">Englisch</option>
+            </select>
+            <select name="format" class="border rounded px-3 py-2">
+              <option value="QR_BILL_ONLY">Nur QR-Rechnung</option>
+              <option value="COMPLETE">Komplette Rechnung mit Empfangsschein</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-gold text-white font-bold py-3 px-6 rounded-xl shadow hover:opacity-90 transition">
+            Vorschau & herunterladen
+          </button>
+        </div>
+      </form>
+
+      <!-- Ergebnis -->
+      <div id="qrResult" class="mt-12 hidden text-center">
+        <iframe id="qrPreview" class="w-full h-[600px] border rounded-xl shadow"></iframe>
+        <a id="downloadLink" href="#" download="qr-rechnung.pdf" class="mt-4 inline-block bg-gold text-dark px-6 py-2 rounded-xl font-semibold shadow hover:opacity-90 transition">
+          PDF herunterladen
+        </a>
+      </div>
+    </div>
+
+    <script src="/scripts/qr-rechnung.js" defer></script>
+  </section>
+</Layout>

@@ -1,0 +1,74 @@
+---
+const footerLinks = [
+  { name: "AGB", href: "/agb" },
+  { name: "Preise", href: "/preise" },
+  { name: "Datenschutz", href: "/datenschutz" },
+  { name: "Impressum", href: "/impressum" }
+];
+---
+
+<footer class="bg-dark text-white px-6 pt-12 pb-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+    
+    <!-- Kontaktbereich -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">JH Virtuell</h3>
+      <p class="mb-2 leading-relaxed">
+        Kollektivgesellschaft<br />Chlini Schanz 31<br />8260 Stein am Rhein
+      </p>
+      <div class="flex flex-col items-center md:items-start gap-2 mt-3 text-sm">
+        <a href="mailto:info@jh-virtuell.ch" class="hover:underline text-gold inline-flex items-center gap-1" aria-label="E-Mail schreiben">
+          📧 info@jh-virtuell.ch
+        </a>
+        <a href="tel:+41786844017" class="hover:underline text-gold inline-flex items-center gap-1" aria-label="Anrufen">
+          📞 +41 78 684 40 17
+        </a>
+        <a href="https://wa.me/41786844017" target="_blank" rel="noopener" class="hover:underline text-green-400 inline-flex items-center gap-1" aria-label="WhatsApp Chat öffnen">
+          💬 WhatsApp Chat
+        </a>
+      </div>
+    </div>
+
+    <!-- Rechtliches -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Rechtliches</h3>
+      <ul class="space-y-2 text-sm">
+        {footerLinks.map(link => (
+          <li>
+            <a href={link.href} class="hover:underline text-white transition">{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Über uns / Google -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Mehr über uns</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/ueber-uns" class="hover:underline text-white">Über uns</a></li>
+        <li><a href="https://g.page/r/CVh6_BBXMl3vEAI/review" target="_blank" rel="noopener" class="hover:underline text-gold">Google Bewertung</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="mt-10">
+    <p class="text-center text-xs text-gray-400">
+      © {new Date().getFullYear()} JH Virtuell – Kollektivgesellschaft. Alle Rechte vorbehalten.
+    </p>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button
+    id="scrollTopBtn"
+    class="hidden fixed bottom-6 right-6 z-[110] bg-transparent border-2 border-gold hover:bg-gold/30 text-gold hover:text-dark rounded-full shadow-lg w-12 h-12 flex items-center justify-center text-2xl transition-all duration-300 opacity-0 pointer-events-none"
+    aria-label="Nach oben scrollen"
+    style="backdrop-filter: blur(8px);"
+  >
+    <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/scripts/scroll-top.js" defer></script>
+</footer>
