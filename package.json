@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "cross-env-shell HOST=0.0.0.0 PORT=${PORT:-4321} node ./dist/server/entry.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@astrojs/node": "^9.5.0",
     "@astrojs/tailwind": "^6.0.2",
+    "cross-env": "^7.0.3",
     "astro": "^5.13.10",
     "autoprefixer": "^10.4.21",
     "@types/pdfkit": "^0.13.9",
