@@ -3,7 +3,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro';
 import dog from '../assets/dog-404.svg';
 ---
 
-<DefaultLayout title="404 – Seite nicht gefunden">
+<DefaultLayout title="404 – Seite nicht gefunden" robots="noindex, nofollow">
   <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16">
     <img
       src={dog.src}

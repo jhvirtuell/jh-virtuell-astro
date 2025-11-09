@@ -4,9 +4,51 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { withVersion } from "../utils/version.ts";
 
-const { title, description } = Astro.props;
+const { title, description, robots = "index, follow" } = Astro.props;
+const siteOrigin = (Astro.site ? Astro.site : new URL("https://jh-virtuell.ch")).toString();
 const currentUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
 const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "/logo-jh.webp";
+
+// Structured Data
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "JH Virtuell",
+  url: siteOrigin,
+  logo: ogImage,
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "JH Virtuell",
+  url: siteOrigin,
+};
+
+const webpageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: currentUrl.toString(),
+};
+
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+const breadcrumbLd = segments.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Start", item: siteOrigin },
+        ...segments.map((seg, i) => ({
+          "@type": "ListItem",
+          position: i + 2,
+          name: decodeURIComponent(seg).replace(/-/g, " "),
+          item: new URL("/" + segments.slice(0, i + 1).join("/"), siteOrigin).toString(),
+        })),
+      ],
+    }
+  : null;
 ---
 
 <!DOCTYPE html>
@@ -17,7 +59,7 @@ const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "
     <meta name="seobility" content="9e2a071672b2807fff9d7a61447c5130" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#d4af37" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="JH Virtuell" />
@@ -33,6 +75,7 @@ const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "
     <meta property="og:image:alt" content="JH Virtuell Logo" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_CH" />
+    <meta property="og:site_name" content="JH Virtuell" />
     <meta property="og:url" content={currentUrl.toString()} />
     <link rel="canonical" href={currentUrl.toString()} />
 
@@ -46,7 +89,13 @@ const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "
     <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Google AdSense entfernt: nicht benötigt -->
+    <!-- Structured Data: Organization, WebSite, WebPage, Breadcrumbs -->
+    <script type="application/ld+json" is:inline>{JSON.stringify(orgLd)}</script>
+    <script type="application/ld+json" is:inline>{JSON.stringify(websiteLd)}</script>
+    <script type="application/ld+json" is:inline>{JSON.stringify(webpageLd)}</script>
+    {breadcrumbLd && (
+      <script type="application/ld+json" is:inline>{JSON.stringify(breadcrumbLd)}</script>
+    )}
 
     <!-- DSGVO-konformes Tracking mit Umami -->
     <script

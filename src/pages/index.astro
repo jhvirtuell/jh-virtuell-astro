@@ -11,7 +11,7 @@ import Card from '../components/Card.astro';
   <section class="relative bg-dark text-white min-h-[70vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden pt-8 md:pt-12 lg:pt-16 pb-16">
     <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true" style="background: linear-gradient(120deg, #1a202c 60%, #d4af37 200%); opacity:.08;"></div>
 
-    <img src="/logo-jh.webp" alt="JH Virtuell Logo" width="256" height="256" class="w-44 md:w-64 lg:w-72 mb-8 drop-shadow-lg" loading="lazy" />
+    <img src="/logo-jh.webp" alt="JH Virtuell Logo" width="256" height="256" class="w-44 md:w-64 lg:w-72 mb-8 drop-shadow-lg" decoding="async" fetchpriority="high" />
 
     <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
       IT-Beratung, Digitalisierung & Support in der Schweiz.
