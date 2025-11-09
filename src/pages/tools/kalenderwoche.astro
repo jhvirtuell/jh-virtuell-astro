@@ -1,21 +1,73 @@
 ---
 import Layout from '../../layouts/DefaultLayout.astro';
 import { withVersion } from '../../utils/version.ts';
+
+export const prerender = false; // server-rendered, damit "heute" immer stimmt (Europe/Zurich)
+
+const TZ = 'Europe/Zurich';
+
+const partsFor = (date: Date, tz = TZ) => {
+  const p = new Intl.DateTimeFormat('de-CH', {
+    timeZone: tz,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+  const get = (t: string) => p.find(x => x.type === t)?.value || '';
+  return { y: Number(get('year')), m: Number(get('month')), d: Number(get('day')) };
+};
+
+const toLocalMidnightUTC = (date: Date, tz = TZ) => {
+  const { y, m, d } = partsFor(date, tz);
+  return new Date(Date.UTC(y, m - 1, d));
+};
+
+const isoWeek = (dUtc: Date) => {
+  const d = new Date(Date.UTC(dUtc.getUTCFullYear(), dUtc.getUTCMonth(), dUtc.getUTCDate()));
+  const dayNum = (d.getUTCDay() + 6) % 7; // 0=Mo..6=So
+  d.setUTCDate(d.getUTCDate() - dayNum + 3); // Donnerstag
+  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
+  const firstDayNum = (firstThursday.getUTCDay() + 6) % 7;
+  firstThursday.setUTCDate(firstThursday.getUTCDate() - firstDayNum + 3);
+  const week = 1 + Math.round((d.getTime() - firstThursday.getTime()) / (7 * 86400000));
+  return { year: d.getUTCFullYear(), week };
+};
+
+const weekBounds = (dUtc: Date) => {
+  const dayNum = (dUtc.getUTCDay() + 6) % 7; // 0=Mo..6=So
+  const monday = new Date(dUtc);
+  monday.setUTCDate(dUtc.getUTCDate() - dayNum);
+  const sunday = new Date(monday);
+  sunday.setUTCDate(monday.getUTCDate() + 6);
+  return { monday, sunday };
+};
+
+const fmtLong = new Intl.DateTimeFormat('de-CH', { timeZone: TZ, weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+const fmtShort = new Intl.DateTimeFormat('de-CH', { timeZone: TZ, day: '2-digit', month: '2-digit', year: 'numeric' });
+
+const now = new Date();
+const todayUtc = toLocalMidnightUTC(now);
+const { week } = isoWeek(todayUtc);
+const { monday, sunday } = weekBounds(todayUtc);
+
+const kwNumber = `KW ${week}`;
+const todayStr = fmtLong.format(now);
+const rangeStr = `Gültig von ${fmtShort.format(monday)} bis ${fmtShort.format(sunday)}`;
 ---
 
 <Layout
-  title="Welche Kalenderwoche ist heute? KW-Rechner 2025 | JH Virtuell"
-  description="Welche Kalenderwoche ist heute? Sofort aktuelle KW berechnen – inklusive Start- und Enddatum. Schnell & kostenlos von JH Virtuell.">
+  title="Kalenderwoche heute (KW) – aktuelle Woche in der Schweiz | JH Virtuell"
+  description="Welche Kalenderwoche ist heute? Aktuelle KW nach ISO 8601 (CH/DE/AT) mit Start- und Enddatum. Kostenloser KW‑Rechner – schnell & ohne Werbung.">
 
-  <!-- Stabil: nutzt globalen Header-Spacer; kein Weissspalt -->
   <section class="relative bg-gradient-to-b from-gold/10 via-light to-white pt-8 md:pt-12 lg:pt-16 pb-20 px-4 min-h-screen">
 
-    <!-- Info-Karte (wird per JS aktualisiert) -->
+    <!-- Antwort-Box: sofort servergerendert für SEO/Snippets -->
     <section class="max-w-xl mx-auto text-center bg-white border-2 border-gold rounded-2xl p-10 shadow-lg mb-12">
       <p id="kw-label" class="text-dark/70 text-base mb-2">Heute ist:</p>
-      <h2 id="kw-number" aria-labelledby="kw-label" class="text-5xl sm:text-6xl font-extrabold text-gold drop-shadow mb-2">KW …</h2>
-      <p id="kw-heute" class="text-sm text-dark/50 mb-4">(…)</p>
-      <p id="kw-zeitraum" class="text-base text-dark">Gültig von … bis …</p>
+      <h1 id="kw-number" aria-labelledby="kw-label" class="text-5xl sm:text-6xl font-extrabold text-gold drop-shadow mb-2">{kwNumber}</h1>
+      <p id="kw-heute" class="text-sm text-dark/50 mb-4">({todayStr})</p>
+      <p id="kw-zeitraum" class="text-base text-dark">{rangeStr}</p>
+      <p class="text-xs text-dark/50 mt-3">Standard: ISO 8601, Wochenbeginn Montag (CH/DE/AT)</p>
     </section>
 
     <!-- Fortschrittsbox (Live im Browser) -->
@@ -32,8 +84,17 @@ import { withVersion } from '../../utils/version.ts';
       <p id="fortschritt-label" class="text-xs italic text-dark/50 mt-1">Woche zu 0% abgeschlossen</p>
     </aside>
 
+    <!-- Erläuterung + interne Verlinkung -->
+    <div class="max-w-2xl mx-auto mt-10 text-center text-dark/80">
+      <p class="mb-2">Synonyme: <strong>Kalenderwoche heute</strong>, <strong>Welche KW ist heute?</strong>, <strong>KW jetzt</strong>.</p>
+      <p>
+        Die Kalenderwoche richtet sich nach <strong>ISO 8601</strong> (Montag–Sonntag). In der Schweiz, Deutschland und Österreich beginnt die Woche am Montag.
+        Weitere nützliche Helfer findest du bei unseren <a href="/tools" class="text-gold hover:underline">kostenlosen Tools</a>.
+      </p>
+    </div>
+
     <!-- Spendenbox -->
-    <div class="mt-20 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
+    <div class="mt-16 max-w-xl mx-auto text-center text-dark/70 text-sm sm:text-base">
       <p class="mb-3">🎁 Du nutzt meine Tools gerne und möchtest mir einen kleinen Kaffee spendieren?</p>
       <p class="mb-4">Dann freue ich mich über ein <strong>Trinkgeld von 2 CHF via PayPal</strong> 💛</p>
       <a href="https://www.paypal.me/jhvirtuell/2" target="_blank" rel="noopener" aria-label="2 CHF via PayPal spenden"
@@ -42,26 +103,45 @@ import { withVersion } from '../../utils/version.ts';
       </a>
       <p class="text-xs text-dark/50 mt-3">Zahlung über <code>info@jh-virtuell.ch</code></p>
     </div>
+
+    <!-- FAQ sichtbar -->
+    <div class="max-w-3xl mx-auto mt-16">
+      <h2 class="text-xl font-bold mb-6 text-gold text-center">Häufige Fragen zur Kalenderwoche (KW)</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-dark">Welche Kalenderwoche haben wir heute?</h3>
+          <p class="text-dark/80 text-base">{kwNumber} – {rangeStr}. Grundlage ist ISO 8601 mit Wochenbeginn Montag (Schweiz/Deutschland/Österreich).</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-dark">Wie wird die KW berechnet?</h3>
+          <p class="text-dark/80 text-base">Nach ISO 8601 gehört die Woche zur Jahreszahl, die den <em>Donnerstag</em> dieser Woche enthält. KW 1 ist die Woche mit dem ersten Donnerstag des Jahres.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-dark">Wie viele Kalenderwochen hat ein Jahr?</h3>
+          <p class="text-dark/80 text-base">Meist 52, in Schalt-/Grenzjahren 53. Das hängt davon ab, wie die ersten/letzten Tage der Jahre fallen.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-dark">Unterscheidet sich die KW in CH/DE/AT?</h3>
+          <p class="text-dark/80 text-base">Nein, alle orientieren sich an ISO 8601: Wochenstart Montag, Wochenende Sonntag.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ JSON-LD -->
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"Welche Kalenderwoche haben wir heute?","acceptedAnswer":{"@type":"Answer","text":`${kwNumber} – ${rangeStr}. Grundlage ist ISO 8601 (Montag–Sonntag).`}},
+          {"@type":"Question","name":"Wie wird die KW berechnet?","acceptedAnswer":{"@type":"Answer","text":"Nach ISO 8601 gehört die Woche zur Jahreszahl, die den Donnerstag dieser Woche enthält. KW 1 ist die Woche mit dem ersten Donnerstag des Jahres."}},
+          {"@type":"Question","name":"Wie viele Kalenderwochen hat ein Jahr?","acceptedAnswer":{"@type":"Answer","text":"Meist 52, in manchen Jahren 53 – abhängig vom Wochenschnitt an Jahresanfang/-ende."}},
+          {"@type":"Question","name":"Unterscheidet sich die KW in CH/DE/AT?","acceptedAnswer":{"@type":"Answer","text":"Nein. In der Schweiz, Deutschland und Österreich gilt ISO 8601 mit Wochenbeginn Montag."}}
+        ]
+      })}
+    </script>
   </section>
 
-  <!-- Strukturierte Daten -->
-  <script type="application/ld+json" is:inline>
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Kalenderwochen-Rechner",
-    "url": "https://jh-virtuell.ch/tools/kalenderwoche",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript",
-    "creator": { "@type": "Organization", "name": "JH Virtuell", "url": "https://jh-virtuell.ch" },
-    "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "CHF" },
-    "description": "Berechne schnell und kostenlos die aktuelle Kalenderwoche (KW) inklusive Start- und Enddatum. Perfekt für Planung, Projekte und Verträge.",
-    "inLanguage": "de-CH",
-    "isAccessibleForFree": true
-  }
-  </script>
-
-  <!-- JS mit Cache-Busting -->
+  <!-- JS: Live‑Fortschritt und Sekundentakt -->
   <script src={withVersion('/scripts/kalenderwoche.js')} defer></script>
 </Layout>
