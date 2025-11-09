@@ -11,8 +11,10 @@ export default defineConfig({
     tailwind(),
     sitemap(),
   ],
+  // Server output with per-page prerendering for static routes
   adapter: node({ mode: 'standalone' }),
   output: 'server',
+  prerender: { default: true },
   vite: {
     plugins: [compression()],
   },
