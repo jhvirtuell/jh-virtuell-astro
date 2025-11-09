@@ -3,57 +3,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("kontaktForm");
   const messageBox = document.getElementById("form-message");
-
   if (!form || !messageBox) return;
 
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    const data = new FormData(form);
+    const name = (data.get("name") || "").toString().trim();
+    const email = (data.get("email") || "").toString().trim();
+    const phone = (data.get("phone") || "").toString().trim();
+    const service = (data.get("service") || "").toString().trim();
+    const message = (data.get("message") || "").toString().trim();
 
-    messageBox.textContent = "⏳ Nachricht wird gesendet...";
-    messageBox.className = "mt-4 text-center text-sm font-semibold text-dark/60";
-
-    const token = typeof payload["cf-turnstile-response"] === "string"
-      ? payload["cf-turnstile-response"].trim()
-      : "";
-
-    if (!token || token.length < 5) {
-      messageBox.textContent = "❌ Sicherheitsüberprüfung fehlgeschlagen. Bitte neu laden.";
+    if (!name || !email || !message) {
+      messageBox.textContent = "❌ Bitte fülle Name, E-Mail und Nachricht aus.";
       messageBox.className = "mt-4 text-center text-sm font-semibold text-red-500";
       return;
     }
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+    const subject = encodeURIComponent(`Kontaktanfrage – ${service || "Allgemein"}`);
+    const bodyLines = [
+      `Name: ${name}`,
+      `E-Mail: ${email}`,
+      `Telefon: ${phone}`,
+      `Thema: ${service}`,
+      "",
+      "Nachricht:",
+      message,
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    const mailto = `mailto:info@jh-virtuell.ch?subject=${subject}&body=${body}`;
 
-      const result = await response.json().catch(() => null);
+    // Öffne das E-Mail-Programm
+    window.location.href = mailto;
+    messageBox.textContent = "✅ E-Mail-Programm wurde geöffnet. Wenn nichts passiert, sende an info@jh-virtuell.ch";
+    messageBox.className = "mt-4 text-center text-sm font-semibold text-green-600";
 
-      if (!response.ok || !result) {
-        throw new Error(result?.message || "Serverfehler. Bitte versuche es später erneut.");
-      }
-
-      messageBox.textContent = result.message;
-      messageBox.className = "mt-4 text-center text-sm font-semibold " + (result.success ? "text-green-600" : "text-red-500");
-
-      if (result.success) {
-        form.reset();
-        if (window.turnstile) {
-          turnstile.reset();
-        }
-      }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : "Fehler beim Senden. Bitte versuche es später erneut.";
-      messageBox.textContent = `❌ ${message}`;
-      messageBox.className = "mt-4 text-center text-sm font-semibold text-red-500";
-    }
+    // Formular zurücksetzen
+    form.reset();
   });
 });

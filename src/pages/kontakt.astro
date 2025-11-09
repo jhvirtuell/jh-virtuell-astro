@@ -46,7 +46,7 @@ import { withVersion } from '../utils/version.ts';
     <div class="max-w-2xl mx-auto">
       <form
         id="kontaktForm"
-        action="/api/contact"
+        action="#"
         method="post"
         accept-charset="UTF-8"
         autocomplete="on"
@@ -96,8 +96,7 @@ import { withVersion } from '../utils/version.ts';
           <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
         </div>
 
-        <!-- Cloudflare Turnstile -->
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAGdrlBXKTHU4MF5" data-theme="light"></div>
+        <!-- Kein CAPTCHA nötig im statischen Modus -->
 
         <div class="flex items-center gap-2">
           <input type="checkbox" id="privacy" name="privacy" required class="accent-gold" />
@@ -143,7 +142,6 @@ import { withVersion } from '../utils/version.ts';
   </section>
 
   <!-- externe Scripts -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <noscript>
     <p class="text-center text-sm text-red-700 mt-4">
       Bitte JavaScript aktivieren, um das Kontaktformular zu senden. Alternativ schreibe an

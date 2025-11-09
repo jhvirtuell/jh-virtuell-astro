@@ -1,58 +1,6 @@
 ---
 import Layout from '../../layouts/DefaultLayout.astro';
 import { withVersion } from '../../utils/version.ts';
-
-export const prerender = false; // server-rendered, damit "heute" immer stimmt (Europe/Zurich)
-
-const TZ = 'Europe/Zurich';
-
-const partsFor = (date: Date, tz = TZ) => {
-  const p = new Intl.DateTimeFormat('de-CH', {
-    timeZone: tz,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).formatToParts(date);
-  const get = (t: string) => p.find(x => x.type === t)?.value || '';
-  return { y: Number(get('year')), m: Number(get('month')), d: Number(get('day')) };
-};
-
-const toLocalMidnightUTC = (date: Date, tz = TZ) => {
-  const { y, m, d } = partsFor(date, tz);
-  return new Date(Date.UTC(y, m - 1, d));
-};
-
-const isoWeek = (dUtc: Date) => {
-  const d = new Date(Date.UTC(dUtc.getUTCFullYear(), dUtc.getUTCMonth(), dUtc.getUTCDate()));
-  const dayNum = (d.getUTCDay() + 6) % 7; // 0=Mo..6=So
-  d.setUTCDate(d.getUTCDate() - dayNum + 3); // Donnerstag
-  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
-  const firstDayNum = (firstThursday.getUTCDay() + 6) % 7;
-  firstThursday.setUTCDate(firstThursday.getUTCDate() - firstDayNum + 3);
-  const week = 1 + Math.round((d.getTime() - firstThursday.getTime()) / (7 * 86400000));
-  return { year: d.getUTCFullYear(), week };
-};
-
-const weekBounds = (dUtc: Date) => {
-  const dayNum = (dUtc.getUTCDay() + 6) % 7; // 0=Mo..6=So
-  const monday = new Date(dUtc);
-  monday.setUTCDate(dUtc.getUTCDate() - dayNum);
-  const sunday = new Date(monday);
-  sunday.setUTCDate(monday.getUTCDate() + 6);
-  return { monday, sunday };
-};
-
-const fmtLong = new Intl.DateTimeFormat('de-CH', { timeZone: TZ, weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
-const fmtShort = new Intl.DateTimeFormat('de-CH', { timeZone: TZ, day: '2-digit', month: '2-digit', year: 'numeric' });
-
-const now = new Date();
-const todayUtc = toLocalMidnightUTC(now);
-const { week } = isoWeek(todayUtc);
-const { monday, sunday } = weekBounds(todayUtc);
-
-const kwNumber = `KW ${week}`;
-const todayStr = fmtLong.format(now);
-const rangeStr = `Gültig von ${fmtShort.format(monday)} bis ${fmtShort.format(sunday)}`;
 ---
 
 <Layout
@@ -64,9 +12,9 @@ const rangeStr = `Gültig von ${fmtShort.format(monday)} bis ${fmtShort.format(s
     <!-- Antwort-Box: sofort servergerendert für SEO/Snippets -->
     <section class="max-w-xl mx-auto text-center bg-white border-2 border-gold rounded-2xl p-10 shadow-lg mb-12">
       <p id="kw-label" class="text-dark/70 text-base mb-2">Heute ist:</p>
-      <h1 id="kw-number" aria-labelledby="kw-label" class="text-5xl sm:text-6xl font-extrabold text-gold drop-shadow mb-2">{kwNumber}</h1>
-      <p id="kw-heute" class="text-sm text-dark/50 mb-4">({todayStr})</p>
-      <p id="kw-zeitraum" class="text-base text-dark">{rangeStr}</p>
+      <h1 id="kw-number" aria-labelledby="kw-label" class="text-5xl sm:text-6xl font-extrabold text-gold drop-shadow mb-2">KW …</h1>
+      <p id="kw-heute" class="text-sm text-dark/50 mb-4">(…)</p>
+      <p id="kw-zeitraum" class="text-base text-dark">Gültig von … bis …</p>
       <p class="text-xs text-dark/50 mt-3">Standard: ISO 8601, Wochenbeginn Montag (CH/DE/AT)</p>
     </section>
 
@@ -110,7 +58,7 @@ const rangeStr = `Gültig von ${fmtShort.format(monday)} bis ${fmtShort.format(s
       <div class="space-y-6">
         <div>
           <h3 class="font-semibold text-dark">Welche Kalenderwoche haben wir heute?</h3>
-          <p class="text-dark/80 text-base">{kwNumber} – {rangeStr}. Grundlage ist ISO 8601 mit Wochenbeginn Montag (Schweiz/Deutschland/Österreich).</p>
+          <p class="text-dark/80 text-base">Die aktuelle Kalenderwoche wird oben angezeigt. Grundlage ist ISO 8601 mit Wochenbeginn Montag (Schweiz/Deutschland/Österreich).</p>
         </div>
         <div>
           <h3 class="font-semibold text-dark">Wie wird die KW berechnet?</h3>
@@ -133,9 +81,9 @@ const rangeStr = `Gültig von ${fmtShort.format(monday)} bis ${fmtShort.format(s
         "@context":"https://schema.org",
         "@type":"FAQPage",
         "mainEntity":[
-          {"@type":"Question","name":"Welche Kalenderwoche haben wir heute?","acceptedAnswer":{"@type":"Answer","text":`${kwNumber} – ${rangeStr}. Grundlage ist ISO 8601 (Montag–Sonntag).`}},
+          {"@type":"Question","name":"Welche Kalenderwoche haben wir heute?","acceptedAnswer":{"@type":"Answer","text":"Die aktuelle Kalenderwoche wird auf der Seite oben angezeigt. Grundlage ist ISO 8601 (Montag–Sonntag)."}},
           {"@type":"Question","name":"Wie wird die KW berechnet?","acceptedAnswer":{"@type":"Answer","text":"Nach ISO 8601 gehört die Woche zur Jahreszahl, die den Donnerstag dieser Woche enthält. KW 1 ist die Woche mit dem ersten Donnerstag des Jahres."}},
-          {"@type":"Question","name":"Wie viele Kalenderwochen hat ein Jahr?","acceptedAnswer":{"@type":"Answer","text":"Meist 52, in manchen Jahren 53 – abhängig vom Wochenschnitt an Jahresanfang/-ende."}},
+          {"@type":"Question","name":"Wie viele Kalenderwochen hat ein Jahr?","acceptedAnswer":{"@type":"Answer","text":"Meist 52, in manchen Jahren 53 – abhängig vom Wochenschnitt an Jahresanfang und -ende."}},
           {"@type":"Question","name":"Unterscheidet sich die KW in CH/DE/AT?","acceptedAnswer":{"@type":"Answer","text":"Nein. In der Schweiz, Deutschland und Österreich gilt ISO 8601 mit Wochenbeginn Montag."}}
         ]
       })}
