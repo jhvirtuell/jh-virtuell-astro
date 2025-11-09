@@ -49,6 +49,23 @@ const breadcrumbLd = segments.length
       ],
     }
   : null;
+
+// Tools schema: add SoftwareApplication JSON-LD automatically for all /tools/* pages
+const isTools = segments[0] === 'tools';
+const toolAppLd = isTools
+  ? {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: title,
+      description,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "All",
+      isAccessibleForFree: true,
+      url: currentUrl.toString(),
+      offers: { "@type": "Offer", price: "0", priceCurrency: "CHF" },
+      creator: { "@type": "Organization", name: "JH Virtuell", url: siteOrigin },
+    }
+  : null;
 ---
 
 <!DOCTYPE html>
@@ -95,6 +112,9 @@ const breadcrumbLd = segments.length
     <script type="application/ld+json" is:inline>{JSON.stringify(webpageLd)}</script>
     {breadcrumbLd && (
       <script type="application/ld+json" is:inline>{JSON.stringify(breadcrumbLd)}</script>
+    )}
+    {toolAppLd && (
+      <script type="application/ld+json" is:inline>{JSON.stringify(toolAppLd)}</script>
     )}
 
     <!-- DSGVO-konformes Tracking mit Umami -->
