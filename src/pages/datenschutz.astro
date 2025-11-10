@@ -39,9 +39,12 @@ import Layout from '../layouts/DefaultLayout.astro';
       </div>
 
       <div>
-        <h2 class="text-xl font-bold text-gold mb-2">4. Kontaktaufnahme per E‑Mail</h2>
+        <h2 class="text-xl font-bold text-gold mb-2">4. Kontaktaufnahme per Formular (E‑Mail)</h2>
         <p>
-          Anfragen über das Kontaktformular werden aktuell als voradressierte E‑Mail in deinem Mailprogramm geöffnet. Mit dem Versand übermittelst du uns die angegebenen Daten (z. B. Name, E‑Mail, Telefonnummer, Nachricht). Die Verarbeitung dient ausschliesslich der Beantwortung deiner Anfrage.
+          Anfragen über das Kontaktformular werden serverseitig auf unserem Hosting verarbeitet und per E‑Mail an uns übermittelt. Dabei werden die von dir angegebenen Daten (Name, E‑Mail, Telefonnummer, Nachricht) ausschliesslich zur Bearbeitung deiner Anfrage verwendet und nicht an Dritte weitergegeben.
+        </p>
+        <p class="mt-2">
+          Die E‑Mail‑Zustellung erfolgt über die Infrastruktur unseres Hosting‑Providers. Eine Speicherung in einer Datenbank findet nicht statt.
         </p>
       </div>
 
@@ -53,9 +56,9 @@ import Layout from '../layouts/DefaultLayout.astro';
       </div>
 
       <div>
-        <h2 class="text-xl font-bold text-gold mb-2">6. Spam‑Schutz</h2>
+        <h2 class="text-xl font-bold text-gold mb-2">6. Spam‑Schutz mit Cloudflare Turnstile</h2>
         <p>
-          Wir verwenden derzeit keine Captcha‑Dienste. Sollten wir zukünftig einen Spam‑Schutz aktivieren, informieren wir hier transparent über Art und Zweck der Verarbeitung.
+          Zum Schutz gegen automatisierte Spam‑Anfragen nutzen wir <strong>Cloudflare Turnstile</strong>. Turnstile prüft, ob eine Anfrage von einem Menschen stammt, ohne personenbezogene Daten zu Tracking‑Zwecken zu verwenden. Die Verifizierung erfolgt über Server von Cloudflare. Weitere Informationen findest du in der <a href="https://www.cloudflare.com/privacypolicy/" class="text-gold hover:underline" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.
         </p>
       </div>
 

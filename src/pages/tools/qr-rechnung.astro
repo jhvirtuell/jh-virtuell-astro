@@ -90,6 +90,9 @@ import Layout from '../../layouts/DefaultLayout.astro';
       </div>
     </div>
 
+    <!-- Libraries for client-side PDF + QR generation -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha512-2sk8xqkE4q9xGv4r1h6KxLwQ4n1n+PceQ0GmU+q8XnK1Q6W7H3n5AFp2GdWJQ7V6s0mZr4z6o5Xv8iUKtQv3Tg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="/scripts/qr-rechnung.js" defer></script>
   </section>
 </Layout>

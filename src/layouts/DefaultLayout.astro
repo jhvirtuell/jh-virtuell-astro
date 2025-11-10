@@ -13,9 +13,24 @@ const ogImage = Astro.site ? new URL("/logo-jh.webp", Astro.site).toString() : "
 const orgLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "JH Virtuell",
+  name: "JH Virtuell KLG",
   url: siteOrigin,
   logo: ogImage,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Chlini Schanz 31",
+    postalCode: "8260",
+    addressLocality: "Stein am Rhein",
+    addressCountry: "CH",
+  },
+  contactPoint: [{
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "info@jh-virtuell.ch",
+    telephone: "+41 78 684 40 17",
+    areaServed: "CH",
+    availableLanguage: ["de", "en"],
+  }],
 };
 
 const websiteLd = {
@@ -23,6 +38,11 @@ const websiteLd = {
   "@type": "WebSite",
   name: "JH Virtuell",
   url: siteOrigin,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteOrigin}?s={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const webpageLd = {
@@ -77,6 +97,7 @@ const toolAppLd = isTools
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    <meta name="googlebot" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="theme-color" content="#d4af37" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="JH Virtuell" />
@@ -100,6 +121,9 @@ const toolAppLd = isTools
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touchicon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <!-- Preconnect/DNS prefetch for third-parties to reduce connection latency -->
     <link rel="preconnect" href="https://cloud.umami.is" crossorigin />
     <link rel="dns-prefetch" href="https://cloud.umami.is" />
@@ -107,14 +131,14 @@ const toolAppLd = isTools
     <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Structured Data: Organization, WebSite, WebPage, Breadcrumbs -->
-    <script type="application/ld+json" is:inline>{JSON.stringify(orgLd)}</script>
-    <script type="application/ld+json" is:inline>{JSON.stringify(websiteLd)}</script>
-    <script type="application/ld+json" is:inline>{JSON.stringify(webpageLd)}</script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(orgLd)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteLd)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(webpageLd)}></script>
     {breadcrumbLd && (
-      <script type="application/ld+json" is:inline>{JSON.stringify(breadcrumbLd)}</script>
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)}></script>
     )}
     {toolAppLd && (
-      <script type="application/ld+json" is:inline>{JSON.stringify(toolAppLd)}</script>
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(toolAppLd)}></script>
     )}
 
     <!-- DSGVO-konformes Tracking mit Umami -->
@@ -134,5 +158,12 @@ const toolAppLd = isTools
     </main>
     <Footer />
     <slot name="scripts" is:raw />
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

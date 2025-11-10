@@ -40,6 +40,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run build:static`    | Build a static site (FTP deploy) to `./dist/`    |
+
+### Static deploy notes
+- Contact form posts to `/contact.php` and uses Cloudflare Turnstile. Set the secret in `public/contact.php` or via server env `TURNSTILE_SECRET_KEY`.
+- QR invoice is generated client‑side using `pdf-lib` + `qrcode-generator` (no server required).
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
